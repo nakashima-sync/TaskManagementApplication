@@ -44,7 +44,7 @@ public class Dao {
 		List<EntTask> resultDb2 = new ArrayList<EntTask>();
 		for (Map<String, Object> result1 : resultDb1) {
 			EntTask entity = new EntTask();
-			entity.setDepart_id((int) result1.get("depart_id"));//result1.get("depart_id") = depart_id(�����������)
+			entity.setDepart_id((int) result1.get("depart_id"));
 			entity.setTask_checked((int) result1.get("checked"));
 			entity.setTask_contents((String) result1.get("contents"));
 			entity.setTask_id((int) result1.get("task_id"));
@@ -53,6 +53,16 @@ public class Dao {
 			resultDb2.add(entity);
 		}
 		return resultDb2;
+	}
+
+	public void update(Long id, EntProject entity) {
+		db.update("UPDATE `project` SET project_name=? WHERE project_id=?",
+				entity.getProject_name(), entity.getProject_id());
+	}
+
+	public void update(Long id, EntUser entity) {
+		db.update("UPDATE `user` SET user_name=? WHERE user_id=?",
+				entity.getUser_name(), entity.getUser_id());
 	}
 
 	public void update(Long id, EntTask entity) {

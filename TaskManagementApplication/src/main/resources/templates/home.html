@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org" >
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" th:href="@{style.css}">
     <title>イメージ</title>
   </head>
   <body>
@@ -14,7 +14,7 @@
           <li class="user"><input type="button" value="プロジェクト2"></li>
         </table>
         <!--プロジェクトを追加するためのボタン-->
-        <button onclick="location.href='./project.html'" class="project-button add-button" type="button" name="name" value="value">プロジェクト追加</button>
+        <button onclick="location.href='./project_add.html'" class="project-button add-button" type="button" name="name" value="value">プロジェクト追加</button>
         
       </div>
 

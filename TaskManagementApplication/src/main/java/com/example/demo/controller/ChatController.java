@@ -12,7 +12,7 @@ import com.example.demo.entity.EntUser;
 @Controller
 public class ChatController {
 
-	private final Dao dao; 
+	public final Dao dao; 
 
 	@Autowired
 	public ChatController(Dao dao) {
@@ -41,13 +41,12 @@ public class ChatController {
 
 	@RequestMapping("/user_add")
 	public String user(Model model) {
-		return "user_add";
+		return "user_add.html";
 	}
 	@RequestMapping("/user_add_db")
 	public String user_add(Model model, EntUser entuser) {
-		System.out.println(entuser.toString());
 		dao.insert(entuser);
-		System.out.println("完了");
-		return "redirect:/user_add";
+		System.out.println("螳御ｺ�");
+		return "home.html";
 	}
 }

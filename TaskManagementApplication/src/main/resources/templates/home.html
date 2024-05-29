@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<<<<<<< HEAD
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+=======
+=======
  <!DOCTYPE html>
+>>>>>>> branch 'master' of git@github.com:nakashima-sync/TaskManagementApplication.git
 <html lang="ja" xmlns:th="http://www.thymeleaf.org" >
   <head>
     <meta charset="UTF-8">
@@ -17,59 +24,81 @@
         <button onclick="location.href='./project_add.html'" class="project-button add-button" type="button" name="name" value="value">プロジェクト追加</button>
         
       </div>
+>>>>>>> branch 'master' of git@github.com:nakashima-sync/TaskManagementApplication.git
 
-      <div class="body"><!--右側bodyに表示する要素-->
-        <div class="user user1">
-          <h3>user1</h3>
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
-         
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>イメージ</title>
+</head>
 
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
-          <input type="button" value="add">
-        </div>
-        
-        <div class="user user2">
-          <h3>user2</h3>
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
-         
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
+<body>
+	<div class="container">
+		<div class="side"><!--左側に表示するプロジェクト等の要素-->
+			<h3>プロジェクト名</h3>
+			<table>
+				<li class="user"><input type="button" value="プロジェクト１"></li>
+				<li class="user"><input type="button" value="プロジェクト2"></li>
+			</table>
+			<!--プロジェクトを追加するためのボタン-->
+			<button th:onclick="@{/project}" class="project-button add-button" type="button" name="name"
+				value="value">プロジェクト追加</button>
+		</div>
 
-          <div>
-            <label>
-            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-            </label>
-            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-          </div>
-          <input type="button" value="add">
-        </div>  
-        <button onclick="location.href='./user.html'" class="user-button add-button" type="button" name="name" value="value">ユーザー追加</button>
+		<div class="body"><!--右側bodyに表示する要素-->
+			<div class="user user1">
+				<h3>user1</h3>
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
 
-      </div>
-  </body>
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+				<input type="button" value="add">
+			</div>
+
+			<div class="user user2">
+				<h3>user2</h3>
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+
+				<div>
+					<label>
+						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+					</label>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+				<input type="button" value="add">
+			</div>
+			<button onclick="location.href='./user.html'" class="user-button add-button" type="button" name="name"
+				value="value">ユーザー追加</button>
+
+		</div>
+</body>
+
 </html>

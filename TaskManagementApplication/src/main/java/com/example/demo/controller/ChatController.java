@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Dao;
+import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntUser;
 
 @Controller
 public class ChatController {
 
-	private final Dao dao; 
+	public final Dao dao; 
 
 	@Autowired
 	public ChatController(Dao dao) {
@@ -41,13 +42,19 @@ public class ChatController {
 
 	@RequestMapping("/user_add")
 	public String user(Model model) {
-		return "user_add";
+		return "user_add.html";
 	}
 	@RequestMapping("/user_add_db")
 	public String user_add(Model model, EntUser entuser) {
-		System.out.println(entuser.toString());
 		dao.insert(entuser);
-		System.out.println("完了");
-		return "redirect:/user_add";
+		System.out.println("螳御ｺ�");
+		return "home.html";
+	}
+
+	@RequestMapping("/project_add")
+	public String project_add(Model model, EntProject entproject) {
+		dao.insert(entproject);
+		return "redirect:/project";
+	
 	}
 }

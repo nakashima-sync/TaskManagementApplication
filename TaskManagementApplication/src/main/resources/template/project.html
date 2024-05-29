@@ -7,7 +7,7 @@
     <body>
         <h1>プロジェクトの追加</h1>
         
-        <form action="#" method="get" th:action="@{/project_add}">
+        <form action="#" method="get" th:action="@{/project_add}" th:object="${/EntProject}">
             <input type="text" name="project_name" placeholder="プロジェクト名">
             <input type="submit" value="追加">
         </form>

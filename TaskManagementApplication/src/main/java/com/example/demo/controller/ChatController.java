@@ -22,7 +22,7 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		return "home";
+		return "home.html";
 	}
 
 	@RequestMapping("/project")

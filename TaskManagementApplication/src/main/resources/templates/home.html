@@ -7,26 +7,69 @@
   </head>
   <body>
     <div class="container">
-      <div class="side">
-        <h3>project</h3>
-        <ul>
-          <li>project内容</li>
-          <li>project追加ボタン</li>
-        </ul>
-        <button onclick="location.href='./project.html'" class="add-button" type="button" name="name" value="value">プロジェクト追加</button>
-      </div>
-      <div class="body">
-        <h2>タスク内容</h2>
-        <p>タスクの詳細と編集</p>
+      <div class="side"><!--左側に表示するプロジェクト等の要素-->
+        <h3>プロジェクト名</h3>
         <table>
-          <tr th:each="i : ${#numbers.sequence(1,5)}">
-            <td th:text="${tests[i-1].id}"></td>
-            <td th:text="${tests[i-1].name}"></td>
-            <td th:text="${tests[i-1].price}"></td>
-            <td th:text="${tests[i-1].genreId}"></td>
-         </tr>
+          <li class="user"><input type="button" value="プロジェクト１"></li>
+          <li class="user"><input type="button" value="プロジェクト2"></li>
         </table>
+        <!--プロジェクトを追加するためのボタン-->
+        <button onclick="location.href='./project.html'" class="project-button add-button" type="button" name="name" value="value">プロジェクト追加</button>
+        
       </div>
-    </div>
+
+      <div class="body"><!--右側bodyに表示する要素-->
+        <div class="user user1">
+          <h3>user1</h3>
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+         
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+          <input type="button" value="add">
+        </div>
+        
+        <div class="user user2">
+          <h3>user2</h3>
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+         
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+
+          <div>
+            <label>
+            <input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+            </label>
+            <input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+          </div>
+          <input type="button" value="add">
+        </div>  
+        <button onclick="location.href='./user.html'" class="user-button add-button" type="button" name="name" value="value">ユーザー追加</button>
+
+      </div>
   </body>
 </html>

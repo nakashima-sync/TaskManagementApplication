@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+    <!-- コメント -->
+    <head>
+        <meta charset="UTF-8">
+        <title>user_view</title>
+    </head>
+    <body>
+        <h1>ユーザー一覧</h1>
+        <form action="#" method="get" th:action="@{/user_add}" th:object="${input}">
+            <div><a>user1</a><input type="submit" value="編集">
+        </form>
+        <br>
+        <div><a href="/user_add">ユーザーの追加</a></div>
+    </body>
+</html>

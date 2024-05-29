@@ -21,7 +21,7 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		return "home.html";
+		return "home";
 	}
 
 	@RequestMapping("/project")

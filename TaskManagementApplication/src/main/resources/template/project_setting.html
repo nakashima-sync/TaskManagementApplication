@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>プロジェクトの設定</h1>
+
+        <div>
+            
+        </div>
+        
+        <form action="#" method="get" th:action="@{/project_add}">
+            <label for="test1">ユーザー名：</label>
+            <input id="text1" type="text" placeholder="ユーザー名"><br>
+            <div>
+                <input id="text2" type="checkbox">
+                <label for="text2">user1</label>
+                <input id="text3" type="checkbox">
+                <label for="text3">user2</label>
+                <input id="text4" type="checkbox">
+                <label for="text4">user3</label>
+            </div>
+            <input type="submit" value="追加">
+        </form>
+    </body>
+</html>

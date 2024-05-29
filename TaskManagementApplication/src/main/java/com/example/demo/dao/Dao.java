@@ -54,4 +54,10 @@ public class Dao {
 		}
 		return resultDb2;
 	}
+
+	public void update(Long id, EntTask entity) {
+		db.update("UPDATE `task` SET task_name=?,depart_id=?,contents=?,date_limit=?,checked=? WHERE task_id=?",
+				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
+				entity.getTask_checked(), entity.getTask_id());
+	}
 }

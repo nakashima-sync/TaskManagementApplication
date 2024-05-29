@@ -1,4 +1,4 @@
-package entity;
+package com.example.demo.entity;
 
 public class EntUser {
     private int user_id;

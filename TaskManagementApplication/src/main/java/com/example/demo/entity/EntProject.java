@@ -1,5 +1,5 @@
-package entity;
-// コメント
+package com.example.demo.entity;
+// コメン�?
 public class EntProject{
     private int project_id;
     private String project_name;

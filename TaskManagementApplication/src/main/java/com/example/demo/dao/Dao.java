@@ -44,7 +44,7 @@ public class Dao {
 		List<EntTask> resultDb2 = new ArrayList<EntTask>();
 		for (Map<String, Object> result1 : resultDb1) {
 			EntTask entity = new EntTask();
-			entity.setDepart_id((int) result1.get("depart_id"));//result1.get("depart_id") = depart_id(ŒŸõğŒ‚æ‚è)
+			entity.setDepart_id((int) result1.get("depart_id"));//result1.get("depart_id") = depart_id(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 			entity.setTask_checked((int) result1.get("checked"));
 			entity.setTask_contents((String) result1.get("contents"));
 			entity.setTask_id((int) result1.get("task_id"));

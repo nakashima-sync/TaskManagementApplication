@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>task_edit</title>
     </head>
     <body>
-        <h1>プロジェクトの追加</h1>
-        <div>プロジェクト名</div>
-        <input type="text">
-        <button onclick="location.href='./home.html'"type="button" name="name">追加</button>
+        <h1>タスクの編集</h1>
+        <form action="#" method="get" th:action="@{/home}" th:object="${input}">
+            <div>タスク名　<input type="text" name="name1" th:value="*{name1}" ></div>
+            <div>期限　　　<input type="date" name="comment1" th:value="*{comment1}" ></div>
+            <div>内容　　　<input type="text" name="comment1" th:value="*{comment1}" style="width:83%"></div>
+            <input type="submit" value="送信">
+        </form>
     </body>
 </html>

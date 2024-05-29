@@ -7,12 +7,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.EntDepart;
 import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntTask;
 import com.example.demo.entity.EntUser;
 
+@Repository
 public class Dao {
 	private final JdbcTemplate db;
 
@@ -26,7 +28,7 @@ public class Dao {
 	}
 
 	public void insert(EntUser entity) {
-		db.update("INSERT INTO `project`(project_name) VALUES(?)", entity.getUser_name());
+		db.update("INSERT INTO `user`(user_name) VALUES(?)", entity.getUser_name());
 	}
 
 	public void insert(EntDepart entity) {
@@ -69,5 +71,9 @@ public class Dao {
 		db.update("UPDATE `task` SET task_name=?,depart_id=?,contents=?,date_limit=?,checked=? WHERE task_id=?",
 				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
 				entity.getTask_checked(), entity.getTask_id());
+	}
+	
+	public void delete(String tableName, Long id) {
+		db.update("delete from `" + tableName + "` where " + tableName + "_id=?", id);
 	}
 }

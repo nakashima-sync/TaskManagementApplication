@@ -5,10 +5,10 @@
         <title>Document</title>
     </head>
     <body>
-        <h1>新しいユーザーの追加</h1>
+        <h1>プロジェクトの追加</h1>
         
-        <form action="#" method="get" th:action="@{/user_add_db}" th:object="${entuser}">
-            <input type="text" name="user_name" placeholder="ユーザー名">
+        <form action="#" method="get" th:action="@{/project_add}" th:object="${/EntProject}">
+            <input type="text" name="project_name" placeholder="プロジェクト名">
             <input type="submit" value="追加">
         </form>
     </body>

@@ -1,12 +1,24 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.entity.EntProject;
+import com.example.demo.dao.Dao;
+import com.example.demo.entity.EntUser;
 
-public class Controller {
+@Controller
+public class ChatController {
+
+	private final Dao dao; 
+
+	@Autowired
+	public ChatController(Dao dao) {
+		this.dao = dao;
+	}
+
 	@RequestMapping("/home")
 	public String home(Model model) {
 		return "home.html";
@@ -27,20 +39,15 @@ public class Controller {
 		return "task.html";
 	}
 
-	@RequestMapping("/user")
+	@RequestMapping("/user_add")
 	public String user(Model model) {
-		return "user.html";
+		return "user_add";
 	}
-
-	@RequestMapping("/project_add")
-	public String project_add(Model model) {
-		EntProject entproject=new EntProject();
-		entproject.setProject_id(entproject.getProject_id());
-		entproject.setProject_name(entproject.getProject_name());		
-		dao.insertDb(entproject);
-		return "redirect:project";
-	
-		return "home.html";
-
+	@RequestMapping("/user_add_db")
+	public String user_add(Model model, EntUser entuser) {
+		System.out.println(entuser.toString());
+		dao.insert(entuser);
+		System.out.println("完了");
+		return "redirect:/user_add";
 	}
 }

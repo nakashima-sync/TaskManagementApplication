@@ -5,21 +5,6 @@
 	<link rel="stylesheet" th:href="@{/style.css}">
 	<title>プロジェクト詳細ページ</title>
 </head>
-
-  <body>
-    <div class="container">
-      <!--左側に表示するプロジェクト一覧-->
-      <div class="side">
-        <h3>Projects</h3>
-        
-          <div th:each="project: ${projectList}">
-            <form action="#" method="get" th:action="@{/home/{id}(id=${project.project_id})}">
-              <!-- とりあえずボタンで実装 -->
-              <input type="submit" th:value="${project.project_name}" />
-              <input type="hidden" name="project_id" th:value="${project.project_id}" />
-            </form>
-          </div>
-        
 <body>
 	<div class="container">
 		<!--左側に表示するプロジェクト一覧-->
@@ -37,40 +22,32 @@
           <input class="project-add-button add-button" type="submit" value="Add"/>
         </form>
       </div>
-			<!--プロジェクトを追加するためのボタン-->
-			<form action="#" method="get" th:action="@{/project_add}">
-				<input class="project-add-button add-button" type="submit" value="Add" />
-			</form>
-		</div>
 
       <div class="body">
         <!--右側bodyに表示する要素-->
         <div class="user user">
           <h3>User's Task list</h3>
           <div>
-            <table th:each="res:${userList}">
+            <table th:each="depart:${departList}">
               <tr>
-                <td th:text="${res.user_name}"></td>
+                <td th:text="${depart.user_name}"></td>
               </tr>
-              <tr>
+              <tr th:each="task : ${depart.user_task}">
                 <td>
-                  <p th:text="${res.task_name} +':'+ ${res.task_contents}"></p>
+                  <p th:text="${task.task_name} +':'+ ${task.task_contents}"></p>
                 </td>
                 <td>
-                  <form action="#" th:action="@{/task_checked}" method="get">
-                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                  <form action="#" th:action="@{/task_checked/{id}(id=${task.task_id})}"method="get">
                     <input type="submit" value="Check!" />
                   </form>
                 </td>
                 <td>
-                  <form action="#" th:action="@{/task_edit}" method="get">
-                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                  <form action="#" th:action="@{/task_edit/{id}(id=${task.task_id})}"method="get">
                     <input type="submit" value="Edit" />
                   </form>
                 </td>
                 <td>
-                  <form action="#" th:action="@{/task_delete}" method="get">
-                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                  <form action="#" th:action="@{/task_edit/{id}(id=${task.task_id})}"method="get">
                     <input type="submit" value="Delete" />
                   </form>
                 </td>
@@ -78,64 +55,16 @@
             </table>
           </div>
         </div>
-		<div class="body">
-			<!--右側bodyに表示する要素-->
-			<div class="user user">
-				<h3>User's Task list</h3>
-				<div>
-					<table th:each="depart:${departList}">
-						<tr>
-							<td th:text="${depart.user_name}"></td>
-						</tr>
-						<tr th:each="task : ${depart.user_task}">
-							<td>
-								<p th:text="${task.task_name} +':'+ ${task.task_contents}"></p>
-							</td>
-							<td>
-								<form action="#" th:action="@{/task_checked}" method="get">
-									<input type="hidden" name="task_id" th:value="${task.task_id}" />
-									<input type="submit" value="Check!" />
-								</form>
-							</td>
-							<td>
-								<form action="#" th:action="@{/task_edit}" method="get">
-									<input type="hidden" name="task_id" th:value="${task.task_id}" />
-									<input type="submit" value="Edit" />
-								</form>
-							</td>
-							<td>
-								<form action="#" th:action="@{/task_delete}" method="get">
-									<input type="hidden" name="task_id" th:value="${task.task_id}" />
-									<input type="submit" value="Delete" />
-								</form>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
 
         <form th:action="@{/user_view}">
           <input class="user-button add-button" type="submit" name="name" value="User List"/>
         </form>
-			<form th:action="@{/user_view}">
-				<input class="user-button add-button" type="submit" name="name" value="User List" />
-			</form>
 
         <form th:action="@{/project_settting/{id}(id=${projectid})}">
           <input type="submit" value="Project Setting" />
-        </form>
-        
+        </form>      
       </div>
     </div>
-  </body>
-			<div th:each="project: ${projectList}">
-				<form action="#" method="get" th:action="@{/project_setting/{id}(id=${project.project_id})}">
-					<!-- とりあえずボタンで実装 -->
-					<input type="submit" th:value="${project.project_name}" />
-				</form>
-			</div>
-		</div>
-	</div>
 </body>
 
 </html>

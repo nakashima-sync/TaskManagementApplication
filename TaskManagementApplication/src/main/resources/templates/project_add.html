@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>プロジェクトの追加</h1>
-        
-        <form action="#" method="get" th:action="@{/project_add}">
-            <input type="text" name="project_name" placeholder="プロジェクト名">
-            <input type="submit" value="追加">
-        </form>
-    </body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>プロジェクトの追加</h1>
+
+	<form action="#" method="get" th:action="@{/project_add}">
+		<input type="text" name="project_name" placeholder="プロジェクト名">
+		<input type="submit" value="追加">
+	</form>
+	<form action="#" method="get" th:action="@{/home}">
+		<input type="submit" value="戻る">
+	</form>
+</body>
+
 </html>

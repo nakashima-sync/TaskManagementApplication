@@ -60,6 +60,7 @@
 				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
 			</div>
 
+<<<<<<< HEAD
 			<div>
 				<label>
 					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
@@ -67,6 +68,15 @@
 				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
 			</div>
 			<input type="button" value="add">
+=======
+			<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
+			</form>
+
+			<form th:action="@{/project_setting}">
+				<input type="submit" value="プロジェクト設定">
+			</form>
+
+>>>>>>> 6a00e62dcad9d382394b50fddfc86d6b9386bbc1
 		</div>
 
 		<div class="user user2">

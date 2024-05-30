@@ -28,7 +28,7 @@ public class ChatController {
 	}
 
 	@RequestMapping("/project/{id}")
-	public String project(@PathVariable Long id, Model model) {
+	public String project_id(@PathVariable Long id, Model model) {
 		return "project.html";
 	}
 
@@ -90,7 +90,10 @@ public class ChatController {
 
 	}
 
-
+	@RequestMapping("/project")
+	public String project(Model model) {
+		return "project.html";
+	}
 
 	@RequestMapping("/project/delete/{id}")
 	public String project_delete(@PathVariable Long id) {

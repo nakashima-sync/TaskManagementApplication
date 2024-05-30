@@ -57,23 +57,23 @@ public class Dao {
 		return resultDb2;
 	}
 
-	public void update(Long id, EntProject entity) {
+	public void update(EntProject entity) {
 		db.update("UPDATE `project` SET project_name=? WHERE project_id=?",
 				entity.getProject_name(), entity.getProject_id());
 	}
 
-	public void update(Long id, EntUser entity) {
+	public void update(EntUser entity) {
 		db.update("UPDATE `user` SET user_name=? WHERE user_id=?",
 				entity.getUser_name(), entity.getUser_id());
 	}
 
-	public void update(Long id, EntTask entity) {
+	public void update(EntTask entity) {
 		db.update("UPDATE `task` SET task_name=?,depart_id=?,contents=?,date_limit=?,checked=? WHERE task_id=?",
 				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
 				entity.getTask_checked(), entity.getTask_id());
 	}
 	
 	public void delete(String tableName, Long id) {
-		db.update("delete from `" + tableName + "` where " + tableName + "_id=?", id);
+		db.update("DELETE FROM `" + tableName + "` WHERE " + tableName + "_id=?", id);
 	}
 }

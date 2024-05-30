@@ -3,15 +3,15 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>task_edit</title>
+        <title>task_add</title>
     </head>
     <body>
-        <h1>タスクの編集</h1>
-        <form action="#" method="get" th:action="@{/home}" th:object="${enttask}">
-            <div>タスク名　<input type="text" name="name1" th:value="*{name1}" ></div>
-            <div>期限　　　<input type="date" name="comment1" th:value="*{comment1}" ></div>
-            <div>内容　　　<input type="text" name="comment1" th:value="*{comment1}" style="width:80%"></div>
-            <input type="submit" value="更新">
+        <h1>タスクの追加</h1>
+        <form action="#" method="get" th:action="@{/task_add_db}" th:object="${enttask}">
+            <div>タスク名 <input type="text" name="task_name"></div>
+            <div>期限     <input type="date" name="task_limit"></div>
+            <div>内容     <input type="text" name="task_contents" style="width:80%"></div>
+            <input type="submit" value="追加">
         </form>
     </body>
 </html>

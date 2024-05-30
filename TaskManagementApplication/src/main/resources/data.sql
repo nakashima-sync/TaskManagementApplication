@@ -20,8 +20,8 @@ INSERT INTO `depart` (user_id, project_id) VALUES (4, 4);
 INSERT INTO `depart` (user_id, project_id) VALUES (5, 5);
 
 -- Insert into task table
-INSERT INTO `task` (task_name, depart_id, contents, date_limit, checked) VALUES ('Task 1', 1, 'Contents for Task 1', '2024-06-30', 0);
-INSERT INTO `task` (task_name, depart_id, contents, date_limit, checked) VALUES ('Task 2', 2, 'Contents for Task 2', '2024-07-15', 0);
-INSERT INTO `task` (task_name, depart_id, contents, date_limit, checked) VALUES ('Task 3', 3, 'Contents for Task 3', '2024-08-01', 0);
-INSERT INTO `task` (task_name, depart_id, contents, date_limit, checked) VALUES ('Task 4', 4, 'Contents for Task 4', '2024-08-20', 0);
-INSERT INTO `task` (task_name, depart_id, contents, date_limit, checked) VALUES ('Task 5', 5, 'Contents for Task 5', '2024-09-10', 0);
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 1', 1, 'Contents for Task 1', '2024-06-30', 0);
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 2', 2, 'Contents for Task 2', '2024-07-15', 0);
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 3', 3, 'Contents for Task 3', '2024-08-01', 0);
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 4', 4, 'Contents for Task 4', '2024-08-20', 0);
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 5', 5, 'Contents for Task 5', '2024-09-10', 0);

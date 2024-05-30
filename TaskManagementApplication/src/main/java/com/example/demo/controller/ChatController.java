@@ -62,8 +62,16 @@ public class ChatController {
 
 	@RequestMapping("/task_add")
 	public String task_add(Model model, EntTask enttask) {
+		return "task_add";
+	
+	}
+
+	@RequestMapping("/task_add_db")
+	public String task_add_db(Model model, EntTask enttask) {
+		enttask.setDepart_id(1);
+		enttask.setTask_checked(1);
 		dao.insert(enttask);
-		return "redirect:/home";
+		return "home";
 	
 	}
 }

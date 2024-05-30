@@ -55,11 +55,6 @@
             </table>
           </div>
         </div>
-
-        <form th:action="@{/user_view}">
-          <input class="user-button add-button" type="submit" name="name" value="User List"/>
-        </form>
-
         <form th:action="@{/project_settting/{id}(id=${projectid})}">
           <input type="submit" value="Project Setting" />
         </form>      

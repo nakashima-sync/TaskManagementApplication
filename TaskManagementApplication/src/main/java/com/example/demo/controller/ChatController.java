@@ -25,7 +25,7 @@ public class ChatController {
 	@RequestMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("projectList", dao.getProject());
-		model.addAttribute("usertList", dao.getAllUser());
+		model.addAttribute("userList", dao.getAllUser());
 		return "home";
 	}
 

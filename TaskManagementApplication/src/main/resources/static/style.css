@@ -4,17 +4,17 @@
   display: flex;
 }
 .body {
-  width: 70%;
-  background-color: yellow;
+  width: 50%;
+  background-color: lightcyan;
 }
 .side {
-  width: 30%;
-  background-color: pink;
+  width: 50%;
+  background-color: lightblue
 }
 .project-add-button {
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #4caf50;
+  background-color: gray;
   color: white;
   border: none;
   border-radius: 5px;
@@ -25,13 +25,13 @@
     align-items: flex-end;
     position: fixed;
     bottom: 0;
-    width: 29%;
+    width: 49%;
     padding: 20px;
     
   
   }
   .add-button:hover {
-    background-color: #45a049;
+    background-color: #blue;
   }
 
   #list-margin {
@@ -48,7 +48,7 @@
 .user-button {
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #4caf50;
+  background-color: gray;
   color: white;
   border: none;
   border-radius: 5px;
@@ -59,7 +59,7 @@
   align-items: flex-end;
   position: fixed;
   bottom: 0;
-  width: 29%;
+  width: 49%;
   padding: 20px;
   
 

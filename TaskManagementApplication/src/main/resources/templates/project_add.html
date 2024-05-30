@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>プロジェクトの追加</title>
+</head>
+
+<body>
+	<h1>プロジェクトの追加</h1>
+	<form action="#" method="get" th:action="@{/project_add_db}" th:object="${entproject}">
+		<div>プロジェクト名 <input type="text" name="project_name"></div>
+		<input type="submit" value="追加">
+	</form>
+</body>
+
+</html>

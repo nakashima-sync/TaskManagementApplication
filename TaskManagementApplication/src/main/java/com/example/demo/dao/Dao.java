@@ -56,15 +56,15 @@ public class Dao {
 		}
 		return resultDb2;
 	}
-	
+
 	public List<EntDepart> getDepartOfProject(int project_id) {
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `depart` WHERE project_id = ?",
 				project_id);
 		List<EntDepart> resultDb2 = new ArrayList<EntDepart>();
 		for (Map<String, Object> depart : resultDb1) {
 			EntDepart entity = new EntDepart();
-			entity.setId((int)depart.get("depart_id"));
-			entity.setUser_id((int)depart.get("user_id"));
+			entity.setId((int) depart.get("depart_id"));
+			entity.setUser_id((int) depart.get("user_id"));
 			entity.setUser_name((String) db
 					.queryForMap("SELECT user_name FROM `user` WHERE user_id = ?", new Object[] { entity.getUser_id() })
 					.get("user_name"));
@@ -86,7 +86,7 @@ public class Dao {
 		return resultDb2;
 	}
 
-	public List<EntProject> getProject() {
+	public List<EntProject> getAllProject() {
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `project`");
 		List<EntProject> resultDb2 = new ArrayList<EntProject>();
 		for (Map<String, Object> result1 : resultDb1) {
@@ -96,6 +96,14 @@ public class Dao {
 			resultDb2.add(entity);
 		}
 		return resultDb2;
+	}
+
+	public EntProject getProject(int project_id) {
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `project` WHERE project_id = ?", project_id);
+		EntProject entity = new EntProject();
+		entity.setProject_id((int) result.get("project_id"));
+		entity.setProject_name((String) result.get("project_name"));
+		return entity;
 	}
 
 	public void update(EntProject entity) {

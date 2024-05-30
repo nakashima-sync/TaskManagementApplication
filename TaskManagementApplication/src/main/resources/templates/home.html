@@ -10,101 +10,51 @@
 <body>
 	<div class="container">
 		<div class="side"><!--左側に表示するプロジェクト等の要素-->
-			<h3>プロジェクト名</h3>
-			<table>
-				<li class="user-button add-button"><input type="button" value="プロジェクト１"></li>
-				<li><input type="button" value="プロジェクト2"></li>
-			</table>
-			<!--プロジェクトを追加するためのボタン-->
-			<form th:action="@{/project}"> <input class="project-add-button add-button" type="submit" name="name"
-					value="プロジェクト追加">
-			</form>
+			<div class="project project">
+				<h1>プロジェクトリスト</h1>
+				<table>
+					<tr th:each="res:${projectList}">
+						<form th:action="@{/home/{id}(id=${res.project_id})}">
+							<input type="submit" name="name" th:value='${res.project_name}'>
+							<input type="hidden" name="project_id" th:value="${res.project_id}">
+						</form>
+						<form th:action="@{/project_setting/{id}(id=${res.project_id})}">
+							<input type="submit" name="name" value="edit">
+							<input type="hidden" name="project_id" th:value="${res.project_id}">
+						</form>
+						</br>
+					</tr>
+				</table>
+
+				<!--プロジェクトを追加するためのボタン-->
+				<form th:action="@{/project_add}"> <input class="project-add-button add-button" type="submit"
+						name="name" value="プロジェクト追加">
+				</form>
+			</div>
 		</div>
+
 
 		<div class="body"><!--右側bodyに表示する要素-->
-			<div class="user user">
-				<h3>ユーザー一覧</h3>
-				<div>
-					<table>
-						<tr th:each="res:${Userlist}">
-							<td th:text="${res.user_name}"></td>
-							<td><input id="list-margin" type="button" value="delete"></td>
-						<tr th:each="res:${Tasklist}">
-							<td><input type="checkbox" id="horns" name="horns">
-								<span th:text="${res.task_name} +':'+ ${res.task_contents}"></span>
-							</td>
+			<!-- <div class="user user"> -->
+			<h1>ユーザー一覧</h1>
+			<table>
+				<tr th:each="res:${userList}">
+					<form th:action="@{/user/{id}(id=${res.user_id})}">
+						<input type="submit" name="name" th:value='${res.user_name}'>
+						<input type="hidden" name="user_id" th:value="${res.user_id}">
+					</form>
+					<form th:action="@{/user_setting/{id}(id=${res.user_id})}">
+						<input type="submit" name="name" value="edit">
+						<input type="hidden" name="user_id" th:value="${res.user_id}">
+					</form>
+					</br>
+				</tr>
+			</table>
 
-							<td><input id="list-margin" type="button" value="edit"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-
-
-
-
-
-
-
-			<h3>user1</h3>
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-			<input type="button" value="add">
-			<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name"
-					value="ユーザー一覧">
+			<form th:action="@{/user_add}"><input class="user-button add-button" type="submit" name="name"
+					value="ユーザー追加">
 			</form>
 
-			<form th:action="@{/project_setting}">
-				<input type="submit" value="プロジェクト設定">
-			</form>
-		</div>
-
-		<div class="user user2">
-			<h3>user2</h3>
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-			<input type="button" value="add">
-		</div>
-
-		<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
-		</form>
-
-	</div>
 </body>
 
 </html>

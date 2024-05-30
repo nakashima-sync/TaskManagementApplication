@@ -55,50 +55,27 @@ public class ChatController {
 		return "home";
 	}
 
+
 	@RequestMapping("/user_view")
 	public String user_view(Model model) {
 		model.addAttribute("user_list", dao.getAllUser());
 		return "user_view";
 	}
 
+
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
 		dao.insert(entproject);
-		return "redirect:/project";
+		return "redirect:/home";
 
 	}
 
 	@RequestMapping("/task_add")
 	public String task_add(Model model, EntTask enttask) {
-		return "task_add";
-	
-	}
-
-	@RequestMapping("/task_add_db")
-	public String task_add_db(Model model, EntTask enttask) {
-		enttask.setDepart_id(1);
-		enttask.setTask_checked(1);
 		dao.insert(enttask);
 		return "redirect:/home";
 
 	}
-
-	@RequestMapping("/task_edit")
-	public String task_edit(Model model, EntTask enttask) {
-		return "task_add";
-	
-	}
-
-	@RequestMapping("/task_edit_db")
-	public String task_edit_db(Model model, EntTask enttask) {
-		enttask.setDepart_id(1);
-		enttask.setTask_checked(1);
-		dao.insert(enttask);
-		return "redirect:/home";
-
-	}
-
-
 
 	@RequestMapping("/project/delete/{id}")
 	public String project_delete(@PathVariable Long id) {

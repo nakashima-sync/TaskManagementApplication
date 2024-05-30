@@ -41,6 +41,18 @@ public class Dao {
 				entity.getTask_checked());
 	}
 
+	public EntTask getTask(int task_id) {
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `task` WHERE task_id = ?", task_id);
+		EntTask entity = new EntTask();
+		entity.setDepart_id((int) result.get("depart_id"));
+		entity.setTask_checked((int) result.get("task_checked"));
+		entity.setTask_contents((String) result.get("task_contents"));
+		entity.setTask_id((int) result.get("task_id"));
+		entity.setTask_limit((Date) result.get("task_limit"));
+		entity.setTask_name((String) result.get("task_name"));
+		return entity;
+	}
+
 	public List<EntTask> getTaskOfDepart(int depart_id) {
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `task` WHERE depart_id = ?", depart_id);
 		List<EntTask> resultDb2 = new ArrayList<EntTask>();
@@ -107,22 +119,23 @@ public class Dao {
 	}
 
 	public void update(EntProject entity) {
-		db.update("UPDATE `project` SET project_name=? WHERE project_id=?",
+		db.update("UPDATE `project` SET project_name　=　? WHERE project_id　=　?",
 				entity.getProject_name(), entity.getProject_id());
 	}
 
 	public void update(EntUser entity) {
-		db.update("UPDATE `user` SET user_name=? WHERE user_id=?",
+		db.update("UPDATE `user` SET user_name　=　? WHERE user_id　=　?",
 				entity.getUser_name(), entity.getUser_id());
 	}
 
 	public void update(EntTask entity) {
-		db.update("UPDATE `task` SET task_name=?,depart_id=?,contents=?,date_limit=?,checked=? WHERE task_id=?",
+		db.update(
+				"UPDATE `task` SET task_name　=　?　,　depart_id　=　?　,　task_contents　=　?　,　task_limit　=　?　,　task_checked =　? WHERE task_id　=　?",
 				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
 				entity.getTask_checked(), entity.getTask_id());
 	}
 
 	public void delete(String tableName, int id) {
-		db.update("DELETE FROM `" + tableName + "` WHERE " + tableName + "_id=?", id);
+		db.update("DELETE FROM `" + tableName + "` WHERE " + tableName + "_id = ?", id);
 	}
 }

@@ -30,14 +30,12 @@ public class ChatController {
 	}
 
 	@RequestMapping("/home/{id}")
-  public String project_view(@PathVariable("id") int id, Model model) {
-	model.addAttribute("projectid", id);
-    model.addAttribute("projectList", dao.getAllProject());
-    model.addAttribute("departList", dao.getDepartOfProject(id));
-    return "home_task";
-}
-
-
+	public String project_view(@PathVariable("id") int id, Model model) {
+		model.addAttribute("projectid", id);
+		model.addAttribute("projectList", dao.getAllProject());
+		model.addAttribute("departList", dao.getDepartOfProject(id));
+		return "home_task";
+	}
 
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
@@ -62,8 +60,9 @@ public class ChatController {
 	}
 
 	@RequestMapping("/project_setting/{id}")
-	public String project_setting(@PathVariable int id, Model model, EntProject entproject) {
-		model.addAttribute("projectdata", dao.getProject(id));
+	public String project_setting(@PathVariable int id, Model model, EntProject entproject, EntDepart entdepart) {
+		model.addAttribute("projectData", dao.getProject(id));
+		model.addAttribute("userList", dao.getAllUser());
 		return "project_setting.html";
 	}
 
@@ -87,6 +86,7 @@ public class ChatController {
 
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask, EntDepart entdepart) {
+		model.addAttribute("taskData", dao.getTask(enttask.getTask_id()));
 		return "task_edit.html";
 	}
 

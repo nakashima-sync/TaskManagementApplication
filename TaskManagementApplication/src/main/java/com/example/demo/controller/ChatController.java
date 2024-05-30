@@ -49,8 +49,8 @@ public class ChatController {
 	public String user_add(Model model, EntUser entuser) {
 		System.out.println(entuser.toString());
 		dao.insert(entuser);
-		System.out.println("完了");
-		return "redirect:/user_add";
+		System.out.println("データベース登録完了");
+		return "home";
 	}
 
 	@RequestMapping("/project_add")

@@ -26,25 +26,20 @@
 				<h3>ユーザー一覧</h3>
 				<div>
 					<table>
-<<<<<<< HEAD
 						<tr th:each="res:${Userlist}">
-						<td th:text="${res.user_name}"></td>
-						<td><input id="list-margin" type="button" value="delete"></td>
-=======
+							<td th:text="${res.user_name}"></td>
+							<td><input id="list-margin" type="button" value="delete"></td>
 						<tr th:each="res:${Tasklist}">
 							<td><input type="checkbox" id="horns" name="horns">
 								<span th:text="${res.task_name} +':'+ ${res.task_contents}"></span>
 							</td>
 
 							<td><input id="list-margin" type="button" value="edit"></td>
->>>>>>> cd232749a931f5926171123c99dfbb9945324be2
 						</tr>
 					</table>
 				</div>
 			</div>
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -106,7 +101,6 @@
 			<input type="button" value="add">
 		</div>
 
->>>>>>> cd232749a931f5926171123c99dfbb9945324be2
 		<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
 		</form>
 

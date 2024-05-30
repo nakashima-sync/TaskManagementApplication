@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
-    <!-- コメント -->
-    <head>
-        <meta charset="UTF-8">
-        <title>user_view</title>
-    </head>
-    <body>
-        <h1>ユーザー一覧</h1>
+<!-- コメント -->
 
-        <form method="get" action="#" th:action="@{/user_add}">
-            <input type="submit" value="ユーザー追加" >
-        </form>
+<head>
+	<meta charset="UTF-8">
+	<title>user_view</title>
+</head>
 
-        
-    </body>
+<body>
+	<h1>ユーザー一覧</h1>
+
+	<div th:each="user : ${user_list}">
+		<p th:text="${user.user_name}"></p>
+	</div>
+
+	<form method="get" action="#" th:action="@{/user_add}">
+		<input type="submit" value="ユーザー追加">
+	</form>
+	<form method="get" action="#" th:action="@{/home}">
+		<input type="submit" value="ホームに戻る">
+	</form>
+
+</body>
+
 </html>

@@ -58,6 +58,18 @@ public class Dao {
 		}
 		return resultDb2;
 	}
+	
+	public List<EntUser> getAllUser() {
+		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `user`");
+		List<EntUser> resultDb2 = new ArrayList<EntUser>();
+		for (Map<String, Object> result1 : resultDb1) {
+			EntUser entity = new EntUser();
+			entity.setUser_id((int)result1.get("user_id"));
+			entity.setUser_name((String)result1.get("user_name"));
+			resultDb2.add(entity);
+		}
+		return resultDb2;
+	}
 
 	public void update(EntProject entity) {
 		db.update("UPDATE `project` SET project_name=? WHERE project_id=?",

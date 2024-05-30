@@ -136,6 +136,6 @@ public class Dao {
 	}
 
 	public void delete(String tableName, int id) {
-		db.update("DELETE FROM `" + tableName + "` WHERE " + tableName + "_id=?", id);
+		db.update("DELETE FROM `" + tableName + "` WHERE " + tableName + "_id = ?", id);
 	}
 }

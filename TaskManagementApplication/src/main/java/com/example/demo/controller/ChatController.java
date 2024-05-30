@@ -60,6 +60,9 @@ public class ChatController {
 
 	@RequestMapping("/project_setting")
 	public String project_setting(Model model, EntProject entproject) {
+		model.addAttribute("userList", dao.getAllUser());
+		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("departList", dao.getDepartOfProject(id));
 		return "project_setting.html";
 	}
 

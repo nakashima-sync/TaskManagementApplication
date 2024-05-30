@@ -47,7 +47,7 @@ public class ChatController {
 	@RequestMapping("/user_add_db")
 	public String user_add(Model model, EntUser entuser) {
 		dao.insert(entuser);
-		System.out.println("螳御ｺ�");
+		System.out.println("データベース登録完了");
 		return "home.html";
 	}
 

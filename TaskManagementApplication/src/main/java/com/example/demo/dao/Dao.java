@@ -119,17 +119,18 @@ public class Dao {
 	}
 
 	public void update(EntProject entity) {
-		db.update("UPDATE `project` SET project_name=? WHERE project_id=?",
+		db.update("UPDATE `project` SET project_name　=　? WHERE project_id　=　?",
 				entity.getProject_name(), entity.getProject_id());
 	}
 
 	public void update(EntUser entity) {
-		db.update("UPDATE `user` SET user_name=? WHERE user_id=?",
+		db.update("UPDATE `user` SET user_name　=　? WHERE user_id　=　?",
 				entity.getUser_name(), entity.getUser_id());
 	}
 
 	public void update(EntTask entity) {
-		db.update("UPDATE `task` SET task_name=?,depart_id=?,contents=?,date_limit=?,checked=? WHERE task_id=?",
+		db.update(
+				"UPDATE `task` SET task_name　=　?　,　depart_id　=　?　,　contents　=　?　,　date_limit　=　?　,　checked=　? WHERE task_id　=　?",
 				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
 				entity.getTask_checked(), entity.getTask_id());
 	}

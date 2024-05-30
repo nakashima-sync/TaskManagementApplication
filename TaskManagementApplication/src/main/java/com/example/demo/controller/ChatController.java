@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Dao;
+import com.example.demo.entity.EntDepart;
 import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntTask;
 import com.example.demo.entity.EntUser;
@@ -24,77 +25,71 @@ public class ChatController {
 	@RequestMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("usertList", dao.getAllUser());
 		return "home";
-	}
-
-	@RequestMapping("/project/{id}")
-	public String project_id(@PathVariable int id, Model model) {
-		return "project.html";
 	}
 
 	@RequestMapping("/home/{id}")
 	public String project_view(@PathVariable int id, Model model) {
 		model.addAttribute("projectList", dao.getProject());
-		model.addAttribute("userList", dao.getUserOfProject(id));
+		model.addAttribute("departList", dao.getDepartOfProject(id));
 		return "home.html";
 	}
 
-	@RequestMapping("/task/{id}")
-	public String task(@PathVariable Long id, Model model) {
-		return "task.html";
+	@RequestMapping("/project_add")
+	public String project_add(Model model, EntProject entproject) {
+		return "project.html";
+	}
+
+	@RequestMapping("/project_add_db")
+	public String project_add_db(Model model, EntProject entproject) {
+		dao.insert(entproject);
+		return "redirect:/home";
 	}
 
 	@RequestMapping("/user_add")
-	public String user(Model model) {
+	public String user(Model model, EntUser entuser) {
 		return "user_add";
 	}
 
 	@RequestMapping("/user_add_db")
 	public String user_add(Model model, EntUser entuser) {
-		System.out.println(entuser.toString());
 		dao.insert(entuser);
-		System.out.println("データベース登録完了");
 		return "redirect:user_view";
 	}
 
-	@RequestMapping("/user_view")
-	public String user_view(Model model) {
-		model.addAttribute("user_list", dao.getAllUser());
-		return "user_view";
+	@RequestMapping("/project_setting")
+	public String project_setting(Model model, EntProject entproject) {
+		return "project_setting.html";
 	}
 
-	@RequestMapping("/project_add")
-	public String project_add(Model model, EntProject entproject) {
-		dao.insert(entproject);
-		return "redirect:/home";
-
+	@RequestMapping("/project_setting_db")
+	public String project_setting_db(Model model, EntProject entproject) {
+		dao.update(entproject);
+		return "redirect:/project_setting";
 	}
 
 	@RequestMapping("/task_add")
-	public String task_add(Model model, EntTask enttask) {
-		dao.insert(enttask);
-		return "redirect:/home";
+	public String task_add(Model model, EntTask enttask, EntDepart entdepart) {
+		return "task_add.html";
+	}
 
+	@RequestMapping("/task_add_db")
+	public String task_add_db(Model model, EntTask enttask, EntDepart entdepart) {
+		enttask.setTask_checked(0);
+		dao.insert(enttask);
+		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
 	@RequestMapping("/task_edit")
-	public String task_edit(Model model, EntTask enttask) {
-		return "task_edit";
-
+	public String task_edit(Model model, EntTask enttask, EntDepart entdepart) {
+		return "task_edit.html";
 	}
 
 	@RequestMapping("/task_edit_db")
-	public String task_edit_db(Model model, EntTask enttask) {
-		enttask.setDepart_id(1);
-		enttask.setTask_checked(1);
-		dao.insert(enttask);
-		return "redirect:/home";
-
-	}
-
-	@RequestMapping("/project")
-	public String project(Model model) {
-		return "project.html";
+	public String task_edit_db(Model model, EntTask enttask, EntDepart entdepart) {
+		dao.update(enttask);
+		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
 	@RequestMapping("/project/delete/{id}")
@@ -103,22 +98,33 @@ public class ChatController {
 		return "redirect:/home";
 	}
 
+	@RequestMapping("/task/delete/{id}")
+	public String task_delete(@PathVariable int id, EntDepart entdepart) {
+		dao.delete("task", id);
+		return "redirect:/home/" + entdepart.getProject_id();
+	}
+
+	@RequestMapping("/task/checked/{id}")
+	public String task_checked(@PathVariable int id, EntTask enttask, EntDepart entdepart) {
+		enttask.setTask_checked(1 - enttask.getTask_checked());
+		dao.update(enttask);
+		return "redirect:/home/" + entdepart.getProject_id();
+	}
+
+	@RequestMapping("/user_edit")
+	public String user_edit(Model model, EntUser entuser) {
+		return "user_edit";
+	}
+
+	@RequestMapping("/user_edit_db")
+	public String user_edit_db(Model model, EntUser entuser) {
+		dao.update(entuser);
+		return "redirect:user_view";
+	}
+
 	@RequestMapping("/user/delete/{id}")
 	public String user_delete(@PathVariable int id) {
 		dao.delete("user", id);
 		return "redirect:/home";
 	}
-
-	@RequestMapping("/task/delete/{id}")
-	public String task_delete(@PathVariable int id) {
-		dao.delete("task", id);
-		return "redirect:/home";
-	}
-
-	@RequestMapping("/task/update")
-	public String task_update(EntTask enttask) {
-		dao.update(enttask);
-		return "redirect:task";
-	}
-
 }

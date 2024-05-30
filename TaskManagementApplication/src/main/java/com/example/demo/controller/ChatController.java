@@ -11,6 +11,7 @@ import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntTask;
 import com.example.demo.entity.EntUser;
 
+
 @Controller
 public class ChatController {
 
@@ -32,7 +33,7 @@ public class ChatController {
 	}
 
 	@RequestMapping("/home/{id}")
-	public String projectView(@PathVariable Long id, Model model) {
+	public String project_view(@PathVariable Long id, Model model) {
 		return "home.html";
 	}
 
@@ -85,4 +86,11 @@ public class ChatController {
 		dao.delete("task", id);
 		return "redirect:/home";
 	}
+	
+	@RequestMapping("/task/update")
+	public String task_update(EntTask enttask) {
+		dao.update(enttask);
+		return "redirect:task";
+	}
+	
 }

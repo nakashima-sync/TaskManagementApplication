@@ -28,7 +28,8 @@
 					<table>
 						<tr th:each="res:${Tasklist}">
 							<td><label>
-								<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成--><td th:text="${res.task_name} +'：'+ ${res.task_contents}"></td>
+									<input type="checkbox" id="horns" name="horns"><!--チェックボックスの生成-->
+							<td th:text="${res.task_name} +';'+ ${res.task_contents}"></td>
 							</label></td>
 							<td><input id="list-margin" type="button" value="edit"></td>
 						</tr>
@@ -38,69 +39,69 @@
 				<input type="button" value="add">
 			</div>
 
-				
-				
-				
-				
-				
-				
-				<h3>user1</h3>
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
 
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
 
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
-				<input type="button" value="add">
+
+
+
+
+			<h3>user1</h3>
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
 			</div>
 
-			<div class="user user2">
-				<h3>user2</h3>
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
-
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
-
-				<div>
-					<label>
-						<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-					</label>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-				</div>
-				<input type="button" value="add">
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
 			</div>
 
-			<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
-			</form>
-
-			<form th:action="@{/project_setting}">
-				<input type="submit" value="プロジェクト設定">
-			</form>
-
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+			</div>
+			<input type="button" value="add">
 		</div>
+
+		<div class="user user2">
+			<h3>user2</h3>
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+			</div>
+
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+			</div>
+
+			<div>
+				<label>
+					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
+				</label>
+				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+			</div>
+			<input type="button" value="add">
+		</div>
+
+		<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
+		</form>
+
+		<form th:action="@{/project_setting}">
+			<input type="submit" value="プロジェクト設定">
+		</form>
+
+	</div>
 </body>
 
 </html>

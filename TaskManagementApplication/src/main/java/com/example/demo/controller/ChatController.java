@@ -23,17 +23,19 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		model.addAttribute("Tasklist", dao.taskOfDepart());
+		model.addAttribute("projectList", dao.getProject());
 		return "home";
 	}
 
 	@RequestMapping("/project/{id}")
-	public String project_id(@PathVariable Long id, Model model) {
+	public String project_id(@PathVariable int id, Model model) {
 		return "project.html";
 	}
 
 	@RequestMapping("/home/{id}")
-	public String project_view(@PathVariable Long id, Model model) {
+	public String project_view(@PathVariable int id, Model model) {
+		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("userList", dao.getUserOfProject(id));
 		return "home.html";
 	}
 
@@ -96,19 +98,19 @@ public class ChatController {
 	}
 
 	@RequestMapping("/project/delete/{id}")
-	public String project_delete(@PathVariable Long id) {
+	public String project_delete(@PathVariable int id) {
 		dao.delete("project", id);
 		return "redirect:/home";
 	}
 
 	@RequestMapping("/user/delete/{id}")
-	public String user_delete(@PathVariable Long id) {
+	public String user_delete(@PathVariable int id) {
 		dao.delete("user", id);
 		return "redirect:/home";
 	}
 
 	@RequestMapping("/task/delete/{id}")
-	public String task_delete(@PathVariable Long id) {
+	public String task_delete(@PathVariable int id) {
 		dao.delete("task", id);
 		return "redirect:/home";
 	}

@@ -26,14 +26,14 @@ public class ChatController {
 	public String home(Model model) {
 		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("userList", dao.getAllUser());
-		return "home";
+		return "home.html";
 	}
 
 	@RequestMapping("/home/{id}")
 	public String project_view(@PathVariable int id, Model model) {
 		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("departList", dao.getDepartOfProject(id));
-		return "home.html";
+		return "home_task.html";
 	}
 
 	@RequestMapping("/project_add")

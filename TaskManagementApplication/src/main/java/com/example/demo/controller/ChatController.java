@@ -78,7 +78,6 @@ public class ChatController {
 
 	}
 
-<<<<<<< HEAD
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask) {
 		return "task_edit";
@@ -96,8 +95,6 @@ public class ChatController {
 
 
 
-=======
->>>>>>> a3f724ff1993f747a825b516c2de788e52854617
 	@RequestMapping("/project/delete/{id}")
 	public String project_delete(@PathVariable Long id) {
 		dao.delete("project", id);

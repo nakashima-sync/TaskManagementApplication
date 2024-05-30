@@ -63,7 +63,7 @@ public class ChatController {
 	@RequestMapping("/task_add")
 	public String task_add(Model model, EntTask enttask) {
 		dao.insert(enttask);
-		return "redirect:/task";
+		return "redirect:/home";
 	
 	}
 }

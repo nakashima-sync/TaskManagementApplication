@@ -24,14 +24,14 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("userList", dao.getAllUser());
 		return "home";
 	}
 
 	@RequestMapping("/home/{id}")
 	public String project_view(@PathVariable int id, Model model) {
-		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("departList", dao.getDepartOfProject(id));
 		return "home.html";
 	}
@@ -58,8 +58,9 @@ public class ChatController {
 		return "redirect:home";
 	}
 
-	@RequestMapping("/project_setting")
-	public String project_setting(Model model, EntProject entproject) {
+	@RequestMapping("/project_setting/{id}")
+	public String project_setting(@PathVariable int id, Model model, EntProject entproject) {
+		model.addAttribute("projectdata", dao.getProject(id));
 		return "project_setting.html";
 	}
 

@@ -42,7 +42,7 @@ public class Dao {
 	}
 
 	public EntTask getTask(int task_id) {
-		Map<String, Object> result = db.queryForMap("SELECT * FROM `project` WHERE task_id = ?", task_id);
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `task` WHERE task_id = ?", task_id);
 		EntTask entity = new EntTask();
 		entity.setDepart_id((int) result.get("depart_id"));
 		entity.setTask_checked((int) result.get("task_checked"));

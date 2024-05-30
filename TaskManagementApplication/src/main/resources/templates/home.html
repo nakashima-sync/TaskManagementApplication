@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" th:href="@{/style.css}">
 	<title>イメージ</title>
 </head>
 
@@ -16,8 +16,9 @@
 				<li class="user"><input type="button" value="プロジェクト2"></li>
 			</table>
 			<!--プロジェクトを追加するためのボタン-->
-			<button th:onclick="@{/project}" class="project-button add-button" type="button" name="name"
-				value="value">プロジェクト追加</button>
+			<form th:action="@{/project}"> <input class="project-button add-button" type="submit" name="name"
+					value="プロジェクト追加">
+			</form>
 		</div>
 
 		<div class="body"><!--右側bodyに表示する要素-->
@@ -70,8 +71,9 @@
 				</div>
 				<input type="button" value="add">
 			</div>
-			<button th:onclick="|location.href='@{/user_view}'|" class="user-button add-button" type="button" name="name"
-            value="value">ユーザー一覧</button>
+
+			<form th:action="@{/user_add}"><input class="user-button add-button" type="submit" name="name" value="ユーザー追加">
+			</form>
 
 		</div>
 </body>

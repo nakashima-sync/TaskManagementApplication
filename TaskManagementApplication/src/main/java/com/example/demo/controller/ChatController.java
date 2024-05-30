@@ -24,17 +24,20 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		model.addAttribute("projectList", dao.getProject());
+		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("userList", dao.getAllUser());
-		return "home";
+		return "home.html";
 	}
 
 	@RequestMapping("/home/{id}")
-	public String project_view(@PathVariable int id, Model model) {
-		model.addAttribute("projectList", dao.getProject());
-		model.addAttribute("departList", dao.getDepartOfProject(id));
-		return "home.html";
-	}
+  public String project_view(@PathVariable("id") int id, Model model) {
+	model.addAttribute("projectid", id);
+    model.addAttribute("projectList", dao.getAllProject());
+    model.addAttribute("departList", dao.getDepartOfProject(id));
+    return "home_task";
+}
+
+
 
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
@@ -48,21 +51,19 @@ public class ChatController {
 	}
 
 	@RequestMapping("/user_add")
-	public String user(Model model, EntUser entuser) {
+	public String user_add(Model model, EntUser entuser) {
 		return "user_add";
 	}
 
 	@RequestMapping("/user_add_db")
-	public String user_add(Model model, EntUser entuser) {
+	public String user_add_db(Model model, EntUser entuser) {
 		dao.insert(entuser);
-		return "redirect:user_view";
+		return "redirect:home";
 	}
 
-	@RequestMapping("/project_setting")
-	public String project_setting(Model model, EntProject entproject) {
-		model.addAttribute("userList", dao.getAllUser());
-		model.addAttribute("projectList", dao.getProject());
-		model.addAttribute("departList", dao.getDepartOfProject(id));
+	@RequestMapping("/project_setting/{id}")
+	public String project_setting(@PathVariable int id, Model model, EntProject entproject) {
+		model.addAttribute("projectData", dao.getProject(id));
 		return "project_setting.html";
 	}
 
@@ -86,6 +87,7 @@ public class ChatController {
 
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask, EntDepart entdepart) {
+		model.addAttribute("taskData", dao.getTask(enttask.getTask_id()));
 		return "task_edit.html";
 	}
 

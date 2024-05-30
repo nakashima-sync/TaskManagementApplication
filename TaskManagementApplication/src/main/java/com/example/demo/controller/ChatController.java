@@ -48,14 +48,14 @@ public class ChatController {
 	}
 
 	@RequestMapping("/user_add")
-	public String user(Model model, EntUser entuser) {
+	public String user_add(Model model, EntUser entuser) {
 		return "user_add";
 	}
 
 	@RequestMapping("/user_add_db")
-	public String user_add(Model model, EntUser entuser) {
+	public String user_add_db(Model model, EntUser entuser) {
 		dao.insert(entuser);
-		return "redirect:user_view";
+		return "redirect:home";
 	}
 
 	@RequestMapping("/project_setting")

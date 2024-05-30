@@ -27,8 +27,8 @@ public class ChatController {
 		return "home";
 	}
 
-	@RequestMapping("/project")
-	public String project(Model model) {
+	@RequestMapping("/project/{id}")
+	public String project(@PathVariable Long id,Model model) {
 		return "project.html";
 	}
 

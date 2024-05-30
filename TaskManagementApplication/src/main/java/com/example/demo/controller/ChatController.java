@@ -60,7 +60,7 @@ public class ChatController {
 
 	@RequestMapping("/project_setting/{id}")
 	public String project_setting(@PathVariable int id, Model model, EntProject entproject) {
-		model.addAttribute("projectdata", dao.getProject(id));
+		model.addAttribute("projectData", dao.getProject(id));
 		return "project_setting.html";
 	}
 
@@ -84,6 +84,7 @@ public class ChatController {
 
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask, EntDepart entdepart) {
+		model.addAttribute("taskData", dao.getTask(enttask.getTask_id()));
 		return "task_edit.html";
 	}
 

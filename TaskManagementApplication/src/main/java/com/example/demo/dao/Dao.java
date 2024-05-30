@@ -49,10 +49,10 @@ public class Dao {
 		for (Map<String, Object> result1 : resultDb1) {
 			EntTask entity = new EntTask();
 			entity.setDepart_id((int) result1.get("depart_id"));
-			entity.setTask_checked((int) result1.get("checked"));
-			entity.setTask_contents((String) result1.get("contents"));
+			entity.setTask_checked((int) result1.get("task_checked"));
+			entity.setTask_contents((String) result1.get("task_contents"));
 			entity.setTask_id((int) result1.get("task_id"));
-			entity.setTask_limit((Date) result1.get("date_limit"));
+			entity.setTask_limit((Date) result1.get("task_limit"));
 			entity.setTask_name((String) result1.get("task_name"));
 			resultDb2.add(entity);
 		}

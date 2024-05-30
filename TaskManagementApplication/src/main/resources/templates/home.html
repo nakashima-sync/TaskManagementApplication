@@ -27,10 +27,13 @@
 				<div>
 					<table>
 						<tr th:each="res:${Tasklist}">
-							<td th:text="${res.task_name}"></td>
+							<td><label>
+								<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成--><td th:text="${res.task_name} +'：'+ ${res.task_contents}"></td>
+							</label></td>
+							<td><input id="list-margin" type="button" value="edit"></td>
 						</tr>
 					</table>
-					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+					<!--ユーザー名と修正ボタンの追加-->
 				</div>
 				<input type="button" value="add">
 			</div>

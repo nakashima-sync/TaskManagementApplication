@@ -23,9 +23,9 @@ CREATE TABLE `task` (
     task_id INT AUTO_INCREMENT,
     task_name VARCHAR(1000) NOT NULL,
     depart_id INT NOT NULL,
-    contents VARCHAR(10000) NOT NULL,
-    date_limit DATE NOT NULL,
-    checked INT NOT NULL,
+    task_contents VARCHAR(10000) NOT NULL,
+    task_limit DATE NOT NULL,
+    task_checked INT NOT NULL,
     PRIMARY KEY (task_id),
     FOREIGN KEY (depart_id) REFERENCES `depart`(depart_id)
 );

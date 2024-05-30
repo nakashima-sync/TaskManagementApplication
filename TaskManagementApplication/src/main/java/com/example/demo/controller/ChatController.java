@@ -58,7 +58,7 @@ public class ChatController {
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
 		dao.insert(entproject);
-		return "redirect:/home";
+		return "redirect:/project";
 
 	}
 

@@ -36,7 +36,7 @@ public class Dao {
 	}
 
 	public void insert(EntTask entity) {
-		db.update("INSERT INTO `task`(task_name,depart_id,contents,date_limit,checked) VALUES(?,?,?,?)",
+		db.update("INSERT INTO `task`(task_name,depart_id,task_contents,task_limit,task_checked) VALUES(?,?,?,?,?)",
 				entity.getTask_name(), entity.getDepart_id(), entity.getTask_contents(), entity.getTask_limit(),
 				entity.getTask_checked());
 	}

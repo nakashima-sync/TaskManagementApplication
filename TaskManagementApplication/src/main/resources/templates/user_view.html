@@ -9,6 +9,10 @@
     <body>
         <h1>ユーザー一覧</h1>
 
+        <div th:each ="user : ${user_list}">
+            <p th:text="${user.user_name}"></p>
+        </div>
+
         <form method="get" action="#" th:action="@{/user_add}">
             <input type="submit" value="ユーザー追加" >
         </form>

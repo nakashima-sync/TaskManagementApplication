@@ -57,6 +57,7 @@ public class ChatController {
 
 	@RequestMapping("/user_view")
 	public String user_view(Model model) {
+		model.addAttribute("user_list", dao.getAllUser());
 		return "user_view";
 	}
 

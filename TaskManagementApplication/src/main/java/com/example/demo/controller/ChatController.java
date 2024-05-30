@@ -11,7 +11,6 @@ import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntTask;
 import com.example.demo.entity.EntUser;
 
-
 @Controller
 public class ChatController {
 
@@ -24,12 +23,12 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		model.addAttribute("Tasklist",dao.taskOfDepart());
+		model.addAttribute("Tasklist", dao.taskOfDepart());
 		return "home";
 	}
 
-	@RequestMapping("/project")
-	public String project(Model model) {
+	@RequestMapping("/project/{id}")
+	public String project(@PathVariable Long id, Model model) {
 		return "project.html";
 	}
 
@@ -56,13 +55,11 @@ public class ChatController {
 		return "redirect:user_view";
 	}
 
-
 	@RequestMapping("/user_view")
 	public String user_view(Model model) {
 		model.addAttribute("user_list", dao.getAllUser());
 		return "user_view";
 	}
-
 
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
@@ -81,7 +78,7 @@ public class ChatController {
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask) {
 		return "task_edit";
-	
+
 	}
 
 	@RequestMapping("/task_edit_db")
@@ -112,11 +109,11 @@ public class ChatController {
 		dao.delete("task", id);
 		return "redirect:/home";
 	}
-	
+
 	@RequestMapping("/task/update")
 	public String task_update(EntTask enttask) {
 		dao.update(enttask);
 		return "redirect:task";
 	}
-	
+
 }

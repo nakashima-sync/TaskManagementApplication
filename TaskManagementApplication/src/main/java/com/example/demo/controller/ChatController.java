@@ -24,6 +24,7 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
+		model.addAttribute("Tasklist",dao.taskOfDepart());
 		return "home";
 	}
 
@@ -84,7 +85,7 @@ public class ChatController {
 
 	@RequestMapping("/task_edit")
 	public String task_edit(Model model, EntTask enttask) {
-		return "task_add";
+		return "task_edit";
 	
 	}
 

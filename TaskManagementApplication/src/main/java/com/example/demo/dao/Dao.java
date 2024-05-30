@@ -41,8 +41,10 @@ public class Dao {
 				entity.getTask_checked());
 	}
 
-	public List<EntTask> taskOfDepart(int depart_id) {
-		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `task` WHERE depart_id = ?", depart_id);
+	public List<EntTask> taskOfDepart() {
+		// int depart_id
+		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `task`");
+		// WHERE depart_id = ?", depart_id
 		List<EntTask> resultDb2 = new ArrayList<EntTask>();
 		for (Map<String, Object> result1 : resultDb1) {
 			EntTask entity = new EntTask();

@@ -22,7 +22,25 @@
 		</div>
 
 		<div class="body"><!--右側bodyに表示する要素-->
-			<div class="user user1">
+			<div class="user user">
+				<h3>タスク一覧</h3>
+				<div>
+					<table>
+						<tr th:each="res:${Tasklist}">
+							<td th:text="${res.task_name}"></td>
+						</tr>
+					</table>
+					<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
+				</div>
+				<input type="button" value="add">
+			</div>
+
+				
+				
+				
+				
+				
+				
 				<h3>user1</h3>
 				<div>
 					<label>

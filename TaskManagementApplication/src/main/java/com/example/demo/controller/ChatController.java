@@ -24,6 +24,7 @@ public class ChatController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
+		model.addAttribute("Tasklist",dao.taskOfDepart());
 		return "home";
 	}
 
@@ -77,6 +78,26 @@ public class ChatController {
 
 	}
 
+<<<<<<< HEAD
+	@RequestMapping("/task_edit")
+	public String task_edit(Model model, EntTask enttask) {
+		return "task_edit";
+	
+	}
+
+	@RequestMapping("/task_edit_db")
+	public String task_edit_db(Model model, EntTask enttask) {
+		enttask.setDepart_id(1);
+		enttask.setTask_checked(1);
+		dao.insert(enttask);
+		return "redirect:/home";
+
+	}
+
+
+
+=======
+>>>>>>> a3f724ff1993f747a825b516c2de788e52854617
 	@RequestMapping("/project/delete/{id}")
 	public String project_delete(@PathVariable Long id) {
 		dao.delete("project", id);

@@ -30,21 +30,11 @@ public class ChatController {
 	}
 
 	@RequestMapping("/home/{id}")
-<<<<<<< HEAD
-	public String project_view(@PathVariable int id, Model model) {
+	public String project_view(@PathVariable("id") int id, Model model) {
 		model.addAttribute("projectList", dao.getAllProject());
 		model.addAttribute("departList", dao.getDepartOfProject(id));
-		return "home_task.html";
+		return "home_task";
 	}
-=======
-  public String project_view(@PathVariable("id") int id, Model model) {
-    model.addAttribute("projectList", dao.getProject());
-    model.addAttribute("departList", dao.getDepartOfProject(id));
-    return "home_task";
-}
-
-
->>>>>>> branch 'master' of git@github.com:nakashima-sync/TaskManagementApplication.git
 
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {

@@ -10,98 +10,58 @@
 <body>
 	<div class="container">
 		<div class="side"><!--左側に表示するプロジェクト等の要素-->
-			<h3>プロジェクト名</h3>
-			<table>
-				<li class="user"><input type="button" value="プロジェクト１"></li>
-				<li class="user"><input type="button" value="プロジェクト2"></li>
-			</table>
-			<!--プロジェクトを追加するためのボタン-->
-			<form th:action="@{/project}"> <input class="project-button add-button" type="submit" name="name"
-					value="プロジェクト追加">
-			</form>
+			<div class="project project">
+				<h3>プロジェクトリスト</h3>
+				<table>
+					<tr th:each="res:${projectList}">
+						<form th:action="@{/home/{id}}">
+							<input type="submit" name="name" th:value='${res.project_name}'>
+							<input type="hidden" name="project_id" th:value="${res.project_id}">
+						</form>
+						<form th:action="@{/project_setting/{id}}">
+							<input type="submit" name="name" value="edit">
+							<input type="hidden" name="project_id" th:value="${res.project_id}">
+						</form>
+					</br>
+					</tr>
+				</table>
+
+				<!--プロジェクトを追加するためのボタン-->
+				<form th:action="@{/project_add}"> <input class="project-add-button add-button" type="submit"
+						name="name" value="プロジェクト追加">
+				</form>
+			</div>
 		</div>
+
 
 		<div class="body"><!--右側bodyに表示する要素-->
-			<div class="user user">
-				<h3>タスク一覧</h3>
-				<div>
-					<table>
-						<tr th:each="res:${Tasklist}">
-							<td><label>
-									<input type="checkbox" id="horns" name="horns"><!--チェックボックスの生成-->
-							<td th:text="${res.task_name} +';'+ ${res.task_contents}"></td>
-							</label></td>
-							<td><input id="list-margin" type="button" value="edit"></td>
-						</tr>
-					</table>
-					<!--ユーザー名と修正ボタンの追加-->
-				</div>
-				<input type="button" value="add">
-			</div>
+
+			<h3>ユーザー一覧</h3>
+
+			<table>
+				<div th:each="user:${user_list}">
+					<form th:action="@{/user/{id}}"><input type="submit" name="name" th:value='${user.user_name}'>
+						<form th:action="@{/user_edit/{id}}"><input type="submit" name="name"value="edit"></form></br>
+						</form>
+					</div>
+			</table>
+
+			<!-- <div th:each="user : ${user_list}">
+				<p th:text="${user.user_name}"></p>
+			</div> -->
+
+			<form th:action="@{/user_add}"><input class="user-button add-button" type="submit" name="name"
+					value="ユーザー追加">
+			</form>
+
+</body>
+
+</html>
 
 
 
 
 
-
-
-			<h3>user1</h3>
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-			<input type="button" value="add">
-		</div>
-
-		<div class="user user2">
-			<h3>user2</h3>
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク1:タスク内容
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク2:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-
-			<div>
-				<label>
-					<input type="checkbox" id="horns" name="horns"></input><!--チェックボックスの生成-->タスク3:
-				</label>
-				<input id="list-margin" type="button" value="edit"><!--ユーザー名と修正ボタンの追加-->
-			</div>
-			<input type="button" value="add">
-		</div>
-
-		<form th:action="@{/user_view}"><input class="user-button add-button" type="submit" name="name" value="ユーザー一覧">
-		</form>
-
-		<form th:action="@{/project_setting}">
-			<input type="submit" value="プロジェクト設定">
-		</form>
-
-	</div>
 </body>
 
 </html>

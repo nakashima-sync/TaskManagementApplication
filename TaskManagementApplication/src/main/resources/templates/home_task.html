@@ -1,0 +1,75 @@
+<html lang="ja" xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>プロジェクト詳細ページ</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!--左側に表示するプロジェクト一覧-->
+      <div class="side">
+        <h3>Projects</h3>
+        <div th:object="">
+          <div th:each="project: ${projectList}">
+            <form action="#" method="get" th:action="@{/home/id}">
+              <!-- とりあえずボタンで実装 -->
+              <input type="submit" th:value="*{project_name}" />
+              <input type="hidden" name="project_id" th:value="*{project_id}" />
+            </form>
+          </div>
+        </div>
+
+        <!--プロジェクトを追加するためのボタン-->
+        <form action="#" method="get" th:action="@{/project_add}">
+          <input class="project-add-button add-button" type="submit" value="Add"/>
+        </form>
+      </div>
+
+      <div class="body">
+        <!--右側bodyに表示する要素-->
+        <div class="user user">
+          <h3>User's Task list</h3>
+          <div>
+            <table th:each="res:${userList}">
+              <tr>
+                <td th:text="${res.user_name}"></td>
+              </tr>
+              <tr>
+                <td>
+                  <p th:text="${res.task_name} +':'+ ${res.task_contents}"></p>
+                </td>
+                <td>
+                  <form action="#" th:action="@{/task_checked}" method="get">
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                    <input type="submit" value="Check!" />
+                  </form>
+                </td>
+                <td>
+                  <form action="#" th:action="@{/task_edit}" method="get">
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                    <input type="submit" value="Edit" />
+                  </form>
+                </td>
+                <td>
+                  <form action="#" th:action="@{/task_delete}" method="get">
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
+                    <input type="submit" value="Delete" />
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <form th:action="@{/user_view}">
+          <input class="user-button add-button" type="submit" name="name" value="User List"/>
+        </form>
+
+        <form th:action="@{/project_setting}">
+          <input type="submit" value="Project Setting" />
+        </form>
+        
+      </div>
+    </div>
+  </body>
+</html>

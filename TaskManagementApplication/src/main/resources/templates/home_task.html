@@ -9,20 +9,19 @@
       <!--左側に表示するプロジェクト一覧-->
       <div class="side">
         <h3>Projects</h3>
-        <div th:each="project: ${projectList}">
-          <form action="#" method="get" th:action="@{/home/{id}(id=${project.project_id})}">
-            <!-- とりあえずボタンで実装 -->
-            <input type="submit" th:value="${project.project_name}" />
-          </form>
-        </div>
+        
+          <div th:each="project: ${projectList}">
+            <form action="#" method="get" th:action="@{/home/{id}(id=${project.project_id})}">
+              <!-- とりあえずボタンで実装 -->
+              <input type="submit" th:value="${project.project_name}" />
+              <input type="hidden" name="project_id" th:value="${project.project_id}" />
+            </form>
+          </div>
+        
 
         <!--プロジェクトを追加するためのボタン-->
         <form action="#" method="get" th:action="@{/project_add}">
-          <input
-            class="project-add-button add-button"
-            type="submit"
-            value="Add"
-          />
+          <input class="project-add-button add-button" type="submit" value="Add"/>
         </form>
       </div>
 
@@ -31,43 +30,29 @@
         <div class="user user">
           <h3>User's Task list</h3>
           <div>
-            <table th:each="depart:${departList}">
+            <table th:each="res:${userList}">
               <tr>
-                <td th:text="${depart.user_name}"></td>
+                <td th:text="${res.user_name}"></td>
               </tr>
-              <tr th:each="task : ${depart.user_task}">
-                <td >
-                  <p
-                    th:text="${task.task_name} +':'+ ${task.task_contents}"
-                  ></p>
+              <tr>
+                <td>
+                  <p th:text="${res.task_name} +':'+ ${res.task_contents}"></p>
                 </td>
                 <td>
                   <form action="#" th:action="@{/task_checked}" method="get">
-                    <input
-                      type="hidden"
-                      name="task_id"
-                      th:value="${task.task_id}"
-                    />
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
                     <input type="submit" value="Check!" />
                   </form>
                 </td>
                 <td>
                   <form action="#" th:action="@{/task_edit}" method="get">
-                    <input
-                      type="hidden"
-                      name="task_id"
-                      th:value="${task.task_id}"
-                    />
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
                     <input type="submit" value="Edit" />
                   </form>
                 </td>
                 <td>
                   <form action="#" th:action="@{/task_delete}" method="get">
-                    <input
-                      type="hidden"
-                      name="task_id"
-                      th:value="${task.task_id}"
-                    />
+                    <input type="hidden" name="task_id" th:value="*{res.task_id}"/>
                     <input type="submit" value="Delete" />
                   </form>
                 </td>
@@ -77,20 +62,13 @@
         </div>
 
         <form th:action="@{/user_view}">
-          <input
-            class="user-button add-button"
-            type="submit"
-            name="name"
-            value="User List"
-          />
+          <input class="user-button add-button" type="submit" name="name" value="User List"/>
         </form>
 
-        <div th:each="project: ${projectList}">
-          <form action="#" method="get" th:action="@{/project_setting/{id}(id=${project.project_id})}">
-            <!-- とりあえずボタンで実装 -->
-            <input type="submit" th:value="${project.project_name}" />
-          </form>
-        </div>
+        <form th:action="@{/project_settting/{id}(id=${projectid})}">
+          <input type="submit" value="Project Setting" />
+        </form>
+        
       </div>
     </div>
   </body>

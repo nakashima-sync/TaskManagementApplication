@@ -52,7 +52,7 @@ public class ChatController {
 		System.out.println(entuser.toString());
 		dao.insert(entuser);
 		System.out.println("データベース登録完了");
-		return "home";
+		return "redirect:user_view";
 	}
 
 

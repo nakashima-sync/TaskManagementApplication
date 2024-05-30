@@ -11,10 +11,11 @@ import com.example.demo.entity.EntProject;
 import com.example.demo.entity.EntTask;
 import com.example.demo.entity.EntUser;
 
+
 @Controller
 public class ChatController {
 
-	private final Dao dao; 
+	private final Dao dao;
 
 	@Autowired
 	public ChatController(Dao dao) {
@@ -31,9 +32,9 @@ public class ChatController {
 		return "project.html";
 	}
 
-	@RequestMapping("/project/{id}")
-	public String projectView(@PathVariable Long id, Model model) {
-		return "redirect:/project";
+	@RequestMapping("/home/{id}")
+	public String project_view(@PathVariable Long id, Model model) {
+		return "home.html";
 	}
 
 	@RequestMapping("/task/{id}")
@@ -45,6 +46,7 @@ public class ChatController {
 	public String user(Model model) {
 		return "user_add";
 	}
+
 	@RequestMapping("/user_add_db")
 	public String user_add(Model model, EntUser entuser) {
 		System.out.println(entuser.toString());
@@ -57,7 +59,7 @@ public class ChatController {
 	public String project_add(Model model, EntProject entproject) {
 		dao.insert(entproject);
 		return "redirect:/project";
-	
+
 	}
 
 	@RequestMapping("/task_add")
@@ -71,7 +73,49 @@ public class ChatController {
 		enttask.setDepart_id(1);
 		enttask.setTask_checked(1);
 		dao.insert(enttask);
-		return "home";
+		return "redirect:/home";
+
+	}
+
+	@RequestMapping("/task_edit")
+	public String task_edit(Model model, EntTask enttask) {
+		return "task_add";
 	
 	}
+
+	@RequestMapping("/task_edit_db")
+	public String task_edit_db(Model model, EntTask enttask) {
+		enttask.setDepart_id(1);
+		enttask.setTask_checked(1);
+		dao.insert(enttask);
+		return "redirect:/home";
+
+	}
+
+
+
+	@RequestMapping("/project/delete/{id}")
+	public String project_delete(@PathVariable Long id) {
+		dao.delete("project", id);
+		return "redirect:/home";
+	}
+
+	@RequestMapping("/user/delete/{id}")
+	public String user_delete(@PathVariable Long id) {
+		dao.delete("user", id);
+		return "redirect:/home";
+	}
+
+	@RequestMapping("/task/delete/{id}")
+	public String task_delete(@PathVariable Long id) {
+		dao.delete("task", id);
+		return "redirect:/home";
+	}
+	
+	@RequestMapping("/task/update")
+	public String task_update(EntTask enttask) {
+		dao.update(enttask);
+		return "redirect:task";
+	}
+	
 }

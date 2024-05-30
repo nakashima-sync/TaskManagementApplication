@@ -70,8 +70,8 @@
 				</div>
 				<input type="button" value="add">
 			</div>
-			<button onclick="location.href='./user.html'" class="user-button add-button" type="button" name="name"
-				value="value">ユーザー追加</button>
+			<button th:onclick="|location.href='@{/user_view}'|" class="user-button add-button" type="button" name="name"
+            value="value">ユーザー一覧</button>
 
 		</div>
 </body>

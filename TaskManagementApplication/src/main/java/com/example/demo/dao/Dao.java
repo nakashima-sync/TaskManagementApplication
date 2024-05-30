@@ -49,10 +49,10 @@ public class Dao {
 		for (Map<String, Object> result1 : resultDb1) {
 			EntTask entity = new EntTask();
 			entity.setDepart_id((int) result1.get("depart_id"));
-			entity.setTask_checked((int) result1.get("checked"));
-			entity.setTask_contents((String) result1.get("contents"));
+			entity.setTask_checked((int) result1.get("task_checked"));
+			entity.setTask_contents((String) result1.get("task_contents"));
 			entity.setTask_id((int) result1.get("task_id"));
-			entity.setTask_limit((Date) result1.get("date_limit"));
+			entity.setTask_limit((Date) result1.get("task_limit"));
 			entity.setTask_name((String) result1.get("task_name"));
 			resultDb2.add(entity);
 		}
@@ -66,6 +66,18 @@ public class Dao {
 			EntUser entity = new EntUser();
 			entity.setUser_id((int)result1.get("user_id"));
 			entity.setUser_name((String)result1.get("user_name"));
+			resultDb2.add(entity);
+		}
+		return resultDb2;
+	}
+
+	public List<EntProject> getProject() {
+		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `project`");
+		List<EntProject> resultDb2 = new ArrayList<EntProject>();
+		for (Map<String, Object> result1 : resultDb1) {
+			EntProject entity = new EntProject();
+			entity.setProject_id((int)result1.get("project_id"));
+			entity.setProject_name((String)result1.get("project_name"));
 			resultDb2.add(entity);
 		}
 		return resultDb2;

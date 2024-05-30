@@ -38,7 +38,7 @@ public class ChatController {
 
 	@RequestMapping("/project_add")
 	public String project_add(Model model, EntProject entproject) {
-		return "project.html";
+		return "project_add.html";
 	}
 
 	@RequestMapping("/project_add_db")

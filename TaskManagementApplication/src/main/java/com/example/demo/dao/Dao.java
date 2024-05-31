@@ -99,7 +99,7 @@ public class Dao {
 	}
 
 	public EntUser getUser(int user_id) {
-		Map<String, Object> result = db.queryForMap("SELECT * FROM `user` WHERE project_id = ?", user_id);
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `user` WHERE user_id = ?", user_id);
 		EntUser entity = new EntUser();
 		entity.setUser_id((int) result.get("user_id"));
 		entity.setUser_name((String) result.get("user_name"));

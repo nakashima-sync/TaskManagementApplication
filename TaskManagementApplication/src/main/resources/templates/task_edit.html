@@ -13,7 +13,7 @@
         <div>タスク名 <input type="text" name="task_name" th:value="*{task_name}"></div>
         <div>期限 <input type="date" name="task_limit" th:value="*{task_limit}"></div>
         <div>内容 <input type="text" name="task_contents" th:value="*{task_contents}" style="width:80%"></div>
-        <input type="submit" value="変更">
+        <input type="submit" value="変更" class="add-button">
     </form>
 
     <form th:action="@{/task/delete/{id}(id=${taskData.task_id})}">

@@ -34,7 +34,7 @@
 
 }
 
-.add-button:hover {
+.big-buttton-hover:hover {
   background-color: blue;
 }
 
@@ -65,4 +65,48 @@
   bottom: 0;
   width: 49%;
   padding: 20px;
+}
+
+.add-button{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	text-decoration: none;
+	height: 20px;
+	width: 40px;
+	margin-left: 15px;;
+	padding: 0 4rem;
+	border-radius: 100vw;
+	background: #6a6e78;
+	background-size: 400%;
+	color: #fff;
+}
+.add-button:hover::before {
+  transform: scaleX(1);
+}
+.add-button:hover {
+	color: #fff;
+}
+.add-button span {
+  position: relative;
+  z-index: 1;
+}
+.add-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgba(39, 172, 217, 1) 10.8%,
+    rgba(18, 83, 229, 1) 94.3%
+  );
+  transition: all 0.475s;
 }

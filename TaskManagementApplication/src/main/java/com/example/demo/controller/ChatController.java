@@ -97,13 +97,15 @@ public class ChatController {
 	}
 
 	@RequestMapping("/task_edit/{id}")
-	public String task_edit(@PathVariable int id, Model model, EntTask enttask, EntDepart entdepart) {
-		model.addAttribute("taskData", dao.getTask(id));
-		return "task_edit.html";
+	public String task_edit(@PathVariable("id") int id, Model model, EntTask enttask, EntDepart entdepart) {
+		EntTask task = dao.getTask(id);
+		model.addAttribute("taskData", task);
+		return "task_edit";
 	}
 
 	@RequestMapping("/task_edit_db")
 	public String task_edit_db(Model model, EntTask enttask, EntDepart entdepart) {
+		enttask.setTask_checked(0);
 		dao.update(enttask);
 		EntProject project = dao.getProjectOfDepart(enttask.getDepart_id());
 		return "redirect:/home/" + project.getProject_id();

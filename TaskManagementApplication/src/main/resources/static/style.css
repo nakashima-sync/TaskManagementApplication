@@ -1,132 +1,141 @@
 /* home_task_style.css */
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f0f4f8;
+	margin: 0;
+	padding: 0;
 }
 
 .container {
-    display: flex;
+	display: flex;
 }
 
 .project_sidebar {
-    background-color: #2a9df4;
-    color: white;
-    padding: 20px;
-    width: 250px;
-    min-height: 100vh;
+	background-color: #2a9df4;
+	color: white;
+	padding: 20px;
+	width: 250px;
+	min-height: 100vh;
 }
 
 .project_sidebar h3 {
-    margin-top: 0;
-    font-size: 24px;
+	margin-top: 0;
+	font-size: 24px;
 }
 
 .project_sidebar form {
-    margin: 10px 0;
+	margin: 10px 0;
 }
 
 .project_sidebar .project-add-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #0056b3;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: left;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	background-color: #0056b3;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: left;
 }
 
 .project_sidebar .button {
-    width: 60%;
-    padding: 10px;
-    border: none;
-    background-color: #0056b3;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: left;
-    margin-top: 15px;
+	width: 60%;
+	padding: 10px;
+	border: none;
+	background-color: #0056b3;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: left;
+	/*    margin-top: 15px;*/
 }
+
 .project_sidebar .editbutton {
-    width: 20%;
-    padding: 7px;
-    border: none;
-    background-color: #0056b3;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 15px;
+	width: 20%;
+	padding: 7px;
+	border: none;
+	background-color: #0056b3;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	/*    margin-left: 15px;*/
 }
 
 .project_sidebar .button:hover,
 .project_sidebar .project-add-button:hover {
-    background-color: #004494;
+	background-color: #004494;
 }
 
 .project_body {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	flex-grow: 1;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .project_body h3 {
-    font-size: 24px;
-    color: #333;
+	font-size: 24px;
+	color: #333;
 }
 
 .each {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
 }
 
 form {
-    display: inline-block;
-    margin: 0;
+	display: inline-block;
+	margin: 0;
 }
 
 input[type="submit"] {
-    padding: 8px 12px;
-    border: none;
-    background-color: #2a9df4;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
+	padding: 8px 12px;
+	border: none;
+	background-color: #2a9df4;
+	color: white;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
+	margin: 0;
+	font-size: 14px;
+	color: #333;
 }
 
 .task-complete {
-    color: green;
-    font-weight: bold;
+	color: green;
+	font-weight: bold;
 }
 
 .task-incomplete {
-    color: red;
-    font-weight: bold;
+	color: red;
+	font-weight: bold;
+}
+
+.username {
+	padding: 5px 12px;
+	border: solid;
+	font-size: 16px;
+	border-radius: 5px;
 }

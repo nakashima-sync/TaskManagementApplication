@@ -39,10 +39,7 @@
 			<h1>ユーザー一覧</h1>
 			<table>
 				<tr class="each" th:each="res:${userList}">
-					<form th:action="@{/user/{id}(id=${res.user_id})}">
-						<input type="submit" name="name" th:value='${res.user_name}'>
-						<input type="hidden" name="user_id" th:value="${res.user_id}">
-					</form>
+				<span th:text="${res.user_name}" class="username"></span>
 					<form th:action="@{/user_edit/{id}(id=${res.user_id})}">
 						<input type="submit" name="name" value="edit">
 						<input type="hidden" name="user_id" th:value="${res.user_id}">

@@ -107,6 +107,16 @@ p {
     font-weight: bold;
 }
 
+.header{
+    height: 350px;
+    background-image: url("./image/project_add_project.jpg");
+    background-size: cover;
+    background-position: 400% 45%;
+}
+
 .top_image {
+    width:100%;
     background-image: url("./image/project_add.jpg");
+    /* background-size: cover; */
+
 }

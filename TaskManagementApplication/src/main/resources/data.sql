@@ -4,7 +4,7 @@ INSERT INTO `user` (user_name) VALUES
 ('Bob'),
 ('Charlie'),
 ('David'),
-('Eve'),
+('Eve');
 
 -- Insert data into the `project` table
 INSERT INTO `project` (project_name) VALUES 
@@ -12,7 +12,7 @@ INSERT INTO `project` (project_name) VALUES
 ('Project Beta'),
 ('Project Gamma'),
 ('Project Delta'),
-('Project Epsilon'),
+('Project Epsilon');
 
 -- Insert data into the `depart` table
 INSERT INTO `depart` (user_id, project_id) VALUES 

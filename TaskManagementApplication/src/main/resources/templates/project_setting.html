@@ -9,28 +9,31 @@
 <body>
     <h1>プロジェクトの設定</h1>
     <div>
-        <form action="#" method="get">
-            <label for="project_add">プロジェクト名：</label>
-            <input id="project_add" type="text" placeholder="プロジェクト名">
-            <br></br>
-            <p>追加するユーザーを選択
-            </p>
-            <table>
-                <tr th:each="res:${userList}">
-                    <td th:text="${res.user_name}">
-                    </td>
-                    <td>        
-                        <form th:action="@{id=${res.user_id},{res.project_id}}"   method="post">
-                            <input type="submit" value="追加">
-                        </form> 
-                    </td>
-                </tr>
-            </table>
-
-            <form th:action="@{/project_add}">
-                <input class="user-button add-button" type="submit" name="name" value="プロジェクトの削除">
-            </form>
-    </div>
-</body>
+        <div th:object="${projectData}">
+            <form action="#" method="get">
+                <label for="project_add">プロジェクト名：</label>
+                <input id="project_add" type="text" placeholder="プロジェクト名" th:value="*{project_name}">
+                
+                <p>追加するユーザーを選択
+                    <br></br>
+                </p>
+                <table>
+                    <tr th:each="res:${userList}">
+                        <td th:text="${res.user_name}">
+                        </td>
+                        <td>        
+                            <form th:action="@{/project_setting_db/{user_id}/{project_id}/{user_name} (user_id=${res.user_id}, project_id=*{project_id},user_name=${res.user_name})}" method="get">
+                                <input type="submit" value="追加">
+                            </form> 
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/project_add}">
+                    <input class="user-button add-button" type="submit" name="name" value="プロジェクトの削除">
+                </form>
+            </div>
+            </div>
+        </body>
 
 </html>

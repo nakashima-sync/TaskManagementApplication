@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,26 +70,30 @@ public class ChatController {
 		return "project_setting";
 	}
 
-	@RequestMapping("/project_setting_db")
-	public String project_setting_db(Model model, EntProject entproject) {
-		dao.update(entproject);
-		return "redirect:/project_setting";
+	@RequestMapping("/project_setting_db/{user_id}/{project_id}/{user_name}")
+	public String project_setting_db(@PathVariable("user_id") int user_id, @PathVariable("project_id") int project_id, @PathVariable("user_name") String user_name, Model model, EntDepart entdepart) {
+		entdepart.setUser_id(user_id);
+		entdepart.setProject_id(project_id);
+		entdepart.setUser_name(user_name);
+		List<EntTask> user_task=new ArrayList<>();
+		entdepart.setUser_task(user_task);
+		dao.insert(entdepart);
+		return "redirect:/project_setting/" + project_id;
 	}
 
 	@RequestMapping("/task_add/{id}")
-	public String task_add(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+	public String task_add(@PathVariable("id") int id, Model model, EntTask enttask, EntDepart entdepart) {
 		model.addAttribute("depart_id", id);
 		return "task_add";
 	}
 
 	@RequestMapping("/task_add_db/{id}")
-	public String task_add_db(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+	public String task_add_db(@PathVariable("id") int id, Model model, EntTask enttask, EntDepart entdepart) {
 		enttask.setDepart_id(id);
 		enttask.setTask_checked(0);
-		List<EntDepart> list = dao.getProjectOfDepart(enttask.getDepart_id());
-		int project_id = list.get(0).getProject_id(); 	
+		EntProject project = dao.getProjectOfDepart(enttask.getDepart_id());
 		dao.insert(enttask);
-		return "redirect:/home/" + project_id ; 
+		return "redirect:/home/" + project.getProject_id();
 	}
 
 	@RequestMapping("/task_edit/{id}")
@@ -100,7 +105,8 @@ public class ChatController {
 	@RequestMapping("/task_edit_db")
 	public String task_edit_db(Model model, EntTask enttask, EntDepart entdepart) {
 		dao.update(enttask);
-		return "redirect:/home/" + entdepart.getProject_id();
+		EntProject project = dao.getProjectOfDepart(enttask.getDepart_id());
+		return "redirect:/home/" + project.getProject_id();
 	}
 
 	@RequestMapping("/project/delete/{id}")
@@ -117,7 +123,7 @@ public class ChatController {
 
 	@RequestMapping("/task/checked/{task_id}/{depart_id}")
 	public String task_checked(@PathVariable("task_id") int task_id, @PathVariable("depart_id") int depart_id) {
-		EntTask enttask = dao.getTask(task_id);		
+		EntTask enttask = dao.getTask(task_id);
 		enttask.setTask_checked(1 - enttask.getTask_checked());
 		dao.update(enttask);
 		return "redirect:/home/" + depart_id;

@@ -14,26 +14,30 @@
                 <label for="project_add">プロジェクト名：</label>
                 <input id="project_add" type="text" placeholder="プロジェクト名" th:value="*{project_name}">
                 
-                <p>追加するユーザーを選択
-                    <br></br>
-                </p>
-                <table>
-                    <tr th:each="res:${userList}">
-                        <td th:text="${res.user_name}">
-                        </td>
-                        <td>        
-                            <form th:action="@{/project_setting_db/{user_id}/{project_id}/{user_name} (user_id=${res.user_id}, project_id=*{project_id},user_name=${res.user_name})}" method="get">
-                                <input type="submit" value="追加">
-                            </form> 
-                        </td>
-                    </tr>
-                </table>
+                <p>追加するユーザーを選択</p>
+
+                <div class="each" th:each="depart : ${departList}">
+                    <table>
+                        <tr th:each="res : ${userList}">
+                            <td th:if="${depart.user_name == res.user_name}">
+                                <span th:text="${res.user_name} + ' 追加済み'"></span>
+                            </td>
+                            <td th:if="${depart.user_name != res.user_name}">
+                                <form th:action="@{/project_setting_db/{user_id}/{project_id}/{user_name} (user_id=${res.user_id}, project_id=*{project_id}, user_name=${res.user_name})}" method="get">
+                                    <span th:text="${res.user_name}"></span>
+                                    <input type="submit" value="追加">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 
-                <form th:action="@{/project_delete/{id}(id=*{project_id})}">
+                <form th:action="@{/project_delete/{id}(id=*{project_id})}" method="get">
                     <input type="submit" value="プロジェクトの削除">
                 </form>
-            </div>
-            </div>
-        </body>
+            </form>
+        </div>
+    </div>
+</body>
 
 </html>

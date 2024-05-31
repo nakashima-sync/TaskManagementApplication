@@ -25,7 +25,7 @@ INSERT INTO `depart` (user_id, project_id) VALUES
 (1,4),
 (2,1),
 (3,1),
-(5,1)
+(5,1);
 
 -- Insert data into the `task` table
 INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES 

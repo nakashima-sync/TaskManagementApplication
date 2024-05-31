@@ -2,23 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <meta charset="UTF-8">
-    <title>タスクの編集</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<meta charset="UTF-8">
+	<title>タスクの編集</title>
 </head>
 
 <body class="body">
-    <h1>タスクの編集</h1>
-    <form action="#" method="get" th:action="@{/task_edit_db}" th:object="${taskData}">
-        <div>タスク名 <input type="text" name="task_name" th:value="*{task_name}"></div>
-        <div>期限 <input type="date" name="task_limit" th:value="*{task_limit}"></div>
-        <div>内容 <input type="text" name="task_contents" th:value="*{task_contents}" style="width:80%"></div>
-        <input type="submit" value="変更">
-    </form>
+	<h1>タスクの編集</h1>
+	<form action="#" method="get" th:action="@{/task_edit_db}" th:object="${taskData}">
+		<input type="hidden" name="task_id" th:value="*{task_id}">
+		<input type="hidden" name="depart_id" th:value="*{depart_id}">
+		<div>タスク名 <input type="text" name="task_name" th:value="*{task_name}"></div>
+		<div>期限 <input type="date" name="task_limit" th:value="*{task_limit}"></div>
+		<div>内容 <input type="text" name="task_contents" th:value="*{task_contents}" style="width:80%"></div>
+		<input type="submit" value="変更">
+	</form>
 
-    <form th:action="@{/task/delete/{id}(id=${taskData.task_id})}">
-        <input type="submit" value="削除" />
-    </form>
+	<form th:action="@{/task/delete/{id}(id=${taskData.task_id})}">
+		<input type="submit" value="削除" />
+	</form>
 </body>
 
 </html>

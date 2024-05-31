@@ -19,7 +19,7 @@
 							<input type="hidden" name="project_id" th:value="${res.project_id}">
 						</form>
 						<form th:action="@{/project_setting/{id}(id=${res.project_id})}">
-							<input type="submit" name="name" value="edit">
+							<input type="submit" name="name" value="edit" class="add-button">
 							<input type="hidden" name="project_id" th:value="${res.project_id}">
 						</form>
 						</br>
@@ -27,7 +27,7 @@
 				</table>
 
 				<!--プロジェクトを追加するためのボタン-->
-				<form th:action="@{/project_add}"> <input class="project-add-button add-button" type="submit"
+				<form th:action="@{/project_add}"> <input class="project-add-button big-buttton-hover" type="submit"
 						name="name" value="プロジェクト追加">
 				</form>
 			</div>
@@ -51,7 +51,7 @@
 				</tr>
 			</table>
 
-			<form th:action="@{/user_add}"><input class="user-button add-button" type="submit" name="name"
+			<form th:action="@{/user_add}"><input class="user-button big-buttton-hover" type="submit" name="name"
 					value="ユーザー追加">
 			</form>
 

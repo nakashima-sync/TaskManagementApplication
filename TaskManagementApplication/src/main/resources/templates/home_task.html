@@ -37,9 +37,11 @@
                   <p th:text="${task.task_name} +':'+ ${task.task_contents}"></p>
                 </td>
                 <td>
-                  <form action="#" th:action="@{/task_checked/{id}(id=${task.task_id})}"method="get">
-                    <input type="submit" value="Check!" />
-                  </form>
+                  <form action="#" th:action="@{/task/checked/{task_id}/{depart_id}(task_id=${task.task_id}, depart_id=${depart.id})}" method="get">
+                    <input type="submit" value="Check" />
+                </form>
+                <p th:if="${task.task_checked == 1}">完了</p>
+                <p th:if="${task.task_checked == 0}">未完了</p>
                 </td>
                 <td>
                   <form action="#" th:action="@{/task_edit/{id}(id=${task.task_id})}"method="get">

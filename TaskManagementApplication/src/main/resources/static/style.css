@@ -3,14 +3,17 @@
   height: 1000px;
   display: flex;
 }
+
 .body {
   width: 50%;
   background-color: lightcyan;
 }
+
 .side {
   width: 50%;
   background-color: lightblue
 }
+
 .project-add-button {
   padding: 10px 20px;
   font-size: 18px;
@@ -19,26 +22,27 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-    
-    display: flex;
-    justify-content: left;
-    align-items: flex-end;
-    position: fixed;
-    bottom: 0;
-    width: 49%;
-    padding: 20px;
-    
-  
-  }
-  .add-button:hover {
-    background-color: blue;
-  }
 
-  #list-margin {
-    margin-left: 15px;
-  }
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
 
-.user{
+}
+
+.add-button:hover {
+  background-color: blue;
+}
+
+#left-margin {
+  margin-left: 15px;
+}
+
+.user {
   border: 2px solid black;
   border-radius: 10px 10px 10px 10px;
   margin: 10px;
@@ -53,7 +57,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
+
   display: flex;
   justify-content: left;
   align-items: flex-end;
@@ -61,6 +65,4 @@
   bottom: 0;
   width: 49%;
   padding: 20px;
-  
-
 }

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,16 +74,20 @@ public class ChatController {
 		return "redirect:/project_setting";
 	}
 
-	@RequestMapping("/task_add")
-	public String task_add(Model model, EntTask enttask, EntDepart entdepart) {
-		return "task_add.html";
+	@RequestMapping("/task_add/{id}")
+	public String task_add(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+		model.addAttribute("depart_id", id);
+		return "task_add";
 	}
 
-	@RequestMapping("/task_add_db")
-	public String task_add_db(Model model, EntTask enttask, EntDepart entdepart) {
+	@RequestMapping("/task_add_db/{id}")
+	public String task_add_db(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+		enttask.setDepart_id(id);
 		enttask.setTask_checked(0);
+		List<EntDepart> list = dao.getProjectOfDepart(enttask.getDepart_id());
+		int project_id = list.get(0).getProject_id(); 	
 		dao.insert(enttask);
-		return "redirect:/home/" + entdepart.getProject_id();
+		return "redirect:/home/" + project_id ; 
 	}
 
 	@RequestMapping("/task_edit/{id}")

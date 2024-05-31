@@ -84,9 +84,9 @@ public class ChatController {
 		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
-	@RequestMapping("/task_edit")
-	public String task_edit(Model model, EntTask enttask, EntDepart entdepart) {
-		model.addAttribute("taskData", dao.getTask(enttask.getTask_id()));
+	@RequestMapping("/task_edit/{id}")
+	public String task_edit(@PathVariable int id, Model model, EntTask enttask, EntDepart entdepart) {
+		model.addAttribute("taskData", dao.getTask(id));
 		return "task_edit.html";
 	}
 

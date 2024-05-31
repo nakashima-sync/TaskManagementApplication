@@ -5,79 +5,70 @@
 	<link rel="stylesheet" th:href="@{/home_task_style.css}" />
 	<title>プロジェクト詳細ページ</title>
 </head>
-
-<body>
-	<div class="container">
-		<!--左側に表示するプロジェクト一覧-->
-		<div class="project_sidebar">
-			<form action="#" method="get" th:action="@{/home}">
-				<input type="submit" class="button home" th:value="Home">
-			</form>
-			<h3>Projects</h3>
-			<div th:each="project: ${projectList}">
-				<form action="#" method="get" th:action="@{/home/{id}(id=${project.project_id})}">
-					<input class="button" type="submit" th:value="${project.project_name}">
-				</form>
-			</div>
-
-			<hr>
-			<!--プロジェクトを追加するためのボタン-->
-			<form action="#" method="get" th:action="@{/project_add}">
-				<input class="project-add-button add-button" type="submit" value="Add" />
-			</form>
-		</div>
-
-		<!--右側bodyに表示する要素-->
-		<div class="project_body">
-			<h3>User's Task list</h3>
-			<div class="each" th:each="depart:${departList}">
-				<table>
-					<tr>
-						<td th:text="${depart.user_name}"></td>
-					</tr>
-					<tr th:each="task : ${depart.user_task}">
-						<td>
-							<p th:text="${task.task_name} +':'+ ${task.task_contents}"></p>
-						</td>
-						<td>
-							<form action="#"
-								th:action="@{/task/checked/{task_id}/{depart_id}(task_id=${task.task_id}, depart_id=${depart.id})}"
-								method="get">
-								<input type="submit" value="Check" />
-							</form>
-						</td>
-						<td>
-							<p th:if="${task.task_checked == 1}" th:text="'完了'" class="task-complete"></p>
-							<p th:if="${task.task_checked == 0}" th:text="'未完了'" class="task-incomplete"></p>
-						</td>
-						<td>
-							<form action="#" th:action="@{/task_edit/{id}(id=${task.task_id})}" method="get">
-								<input type="submit" value="Edit" />
-							</form>
-						</td>
-						<td>
-							<form action="#"
-								th:action="@{/task/delete/{task_id}/{depart_id}(task_id=${task.task_id}, depart_id=${depart.id})}"
-								method="get">
-								<input type="submit" value="Delete" />
-							</form>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<form action="#" th:action="@{/task_add/{id}(id=${depart.id})}" method="get">
-								<input type="hidden" th:value="${depart.id}" />
-								<input type="submit" value="Add Task" />
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<form th:action="@{/project_setting/{id}(id=${projectid})}">
-				<input type="submit" value="Project Setting" />
-			</form>
-		</div>
-	</div>
-</body>
-
+      <!--右側bodyに表示する要素-->
+      <div class="project_body">
+        <h3>User's Task list</h3>
+        <div class="each" th:each="depart:${departList}">
+          <table>
+            <tr>
+              <td th:text="${depart.user_name}"></td>
+            </tr>
+            <tr th:each="task : ${depart.user_task}">
+              <td>
+                <p th:text="${task.task_name} +':'+ ${task.task_contents}"></p>
+              </td>
+              <td>
+                <form
+                  action="#"
+                  th:action="@{/task/checked/{task_id}/{depart_id}(task_id=${task.task_id}, depart_id=${depart.id})}"
+                  method="get"
+                >
+                  <input type="submit" value="Check" />
+                </form>
+              </td>
+              <td>
+                <p th:if="${task.task_checked == 1}" th:text="'完了'" class="task-complete"></p>
+                <p th:if="${task.task_checked == 0}" th:text="'未完了'" class="task-incomplete"></p>
+              </td>
+              <td>
+                <form
+                  action="#"
+                  th:action="@{/task_edit/{id}(id=${task.task_id})}"
+                  method="get"
+                >
+                  <input type="submit" value="Edit" />
+                </form>
+              </td>
+              <td>
+                <form
+                  action="#"
+                  th:action="@{/task/delete/{task_id}/{depart_id}(task_id=${task.task_id}, depart_id=${depart.id})}"
+                  method="get"
+                >
+                  <input type="submit" value="Delete" />
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <form
+                  action="#"
+                  th:action="@{/task_add/{id}(id=${depart.id})}"
+                  method="get"
+                >
+                  <input type="hidden" th:value="${depart.id}" />
+                  <input type="submit" value="Add Task" />
+                </form>
+              </td>
+            </tr>
+          </table>
+          <form th:action="@{/project_setting/{id}(id=${depart.id})}">
+            <input type="submit" value="Project Setting" />
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </body>
 </html>
+

@@ -64,9 +64,9 @@ public class ChatController {
 
 	@RequestMapping("/project_setting/{id}")
 	public String project_setting(@PathVariable("id") int id, Model model, EntProject entproject, EntDepart entdepart) {
+		model.addAttribute("departList", dao.getDepartOfProject(id));
 		model.addAttribute("projectData", dao.getProject(id));
 		model.addAttribute("userList", dao.getAllUser());
-		// model.addAttribute("project_userList", dao.getProjectUser());
 		return "project_setting";
 	}
 

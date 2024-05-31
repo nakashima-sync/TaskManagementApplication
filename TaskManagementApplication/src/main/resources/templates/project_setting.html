@@ -8,21 +8,19 @@
         <h1>プロジェクトの設定</h1>
 
         <div>
-            <a>プロジェクト名</a>
-                <input type="text">
-                <th:action="@{/project_setting_db}">
+            <form action="#" method="get" th:action="@{/project_add}">
+                <label for="project_add">プロジェクト名：</label>
+                <input id="project_add" type="text" placeholder="プロジェクト名"><br>
             <table>
                 <tr th:each="res:${userList}">
-                    <form th:action="@{/user/{id}}"></br>
-                        <input type="checkbox">
-       
-                            <input type="submit" name="name" th:value='${res.user_name}'>
+                    <form th:action="@{/user/{id}(id=${res.user_id})}"></br>
+                        <input type="checkbox">   
+                            <input type="submit" name="user_name" th:value="${res.user_name}">
                              <input type="hidden" name="user_id" th:value="${res.user_id}">
                     </form>
                     </br>
                 </tr>
             </table>
-
 
         <form th:action="@{/project_add}">
             <input class="user-button add-button" type="submit" name="name"
@@ -32,10 +30,7 @@
         </form>
         </div>
 
-
-
-
-<!--    <form action="#" method="get" th:action="@{/project_add}">
+   <!-- <form action="#" method="get" th:action="@{/project_add}">
             <label for="test1">ユーザー名：</label>
             <input id="text1" type="text" placeholder="ユーザー名"><br>
             <div>

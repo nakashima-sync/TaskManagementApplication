@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +70,15 @@ public class ChatController {
 		return "project_setting";
 	}
 
-	@RequestMapping("/project_setting_db")
-	public String project_setting_db(Model model, EntProject entproject) {
-		dao.update(entproject);
-		return "redirect:/project_setting";
+	@RequestMapping("/project_setting_db/{user_id}/{project_id}/{user_name}")
+	public String project_setting_db(@PathVariable("user_id") int user_id, @PathVariable("project_id") int project_id, @PathVariable("user_name") String user_name, Model model, EntDepart entdepart) {
+		entdepart.setUser_id(user_id);
+		entdepart.setProject_id(project_id);
+		entdepart.setUser_name(user_name);
+		List<EntTask> user_task=new ArrayList<>();
+		entdepart.setUser_task(user_task);
+		dao.insert(entdepart);
+		return "redirect:/project_setting/" + project_id;
 	}
 
 	@RequestMapping("/task_add/{id}")

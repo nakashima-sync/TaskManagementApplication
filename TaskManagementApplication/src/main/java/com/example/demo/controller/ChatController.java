@@ -111,8 +111,8 @@ public class ChatController {
 		return "redirect:/home/" + project.getProject_id();
 	}
 
-	@RequestMapping("/project/delete/{id}")
-	public String project_delete(@PathVariable int id) {
+	@RequestMapping("/project_delete/{id}")
+	public String project_delete(@PathVariable("id") int id) {
 		dao.delete("project", id);
 		return "redirect:/home";
 	}

@@ -8,6 +8,9 @@
 </head>
 
 <body class="body">
+	<form action="#" method="get" th:action="@{/home}">
+		<input type="submit" class="button home" th:value="Home">
+	</form>
 	<h1>タスクの編集</h1>
 	<form action="#" method="get" th:action="@{/task_edit_db}" th:object="${taskData}">
 		<input type="hidden" name="task_id" th:value="*{task_id}">

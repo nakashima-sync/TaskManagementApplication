@@ -8,6 +8,9 @@
 </head>
 
 <body class="body">
+	<form action="#" method="get" th:action="@{/home}">
+		<input type="submit" class="button home" th:value="Home">
+	</form>
 	<h1>ユーザーの編集</h1>
 
 	<form th:action="@{/user_edit_db}" th:object="${entuser}">

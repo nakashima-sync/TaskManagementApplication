@@ -98,6 +98,14 @@ public class Dao {
 		return resultDb2;
 	}
 
+	public EntUser getUser(int user_id) {
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `user` WHERE project_id = ?", user_id);
+		EntUser entity = new EntUser();
+		entity.setUser_id((int) result.get("user_id"));
+		entity.setUser_name((String) result.get("user_name"));
+		return entity;
+	}
+
 	public List<EntProject> getAllProject() {
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `project`");
 		List<EntProject> resultDb2 = new ArrayList<EntProject>();

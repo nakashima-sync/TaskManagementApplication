@@ -115,8 +115,9 @@ public class ChatController {
 		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
-	@RequestMapping("/user_edit")
-	public String user_edit(Model model, EntUser entuser) {
+	@RequestMapping("/user_edit/{id}")
+	public String user_edit(@PathVariable int id, Model model, EntUser entuser) {
+		model.addAttribute("userData", dao.getUser(id));
 		return "user_edit";
 	}
 

@@ -25,10 +25,10 @@
 
       <div class="body">
         <!--右側bodyに表示する要素-->
-        <div class="user user">
+        <div class="user_view">
           <h3>User's Task list</h3>
-          <div>
-            <table th:each="depart:${departList}">
+          <div class="each"  th:each="depart:${departList}">
+            <table>
               <tr>
                 <td th:text="${depart.user_name}"></td>
               </tr>
@@ -52,12 +52,21 @@
                   </form>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <form action="#" th:action="@{/task_add/{id}(id=${depart.id})}" method="get">
+                    <input type="hidden" th:value="${depart.id}">
+                    <input type="submit" value="Add Task" />
+                  </form>
+                </td>
+              </tr>
             </table>
           </div>
+          <form th:action="@{/project_setting/{id}(id=${projectid})}">
+            <input type="submit" value="Project Setting" />
+          </form>  
         </div>
-        <form th:action="@{/project_setting/{id}(id=${projectid})}">
-          <input type="submit" value="Project Setting" />
-        </form>      
+            
       </div>
     </div>
 </body>

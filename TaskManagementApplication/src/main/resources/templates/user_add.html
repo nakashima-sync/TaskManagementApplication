@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
     <head>
+        <link rel="stylesheet" th:href="@{/style.css}">
         <meta charset="UTF-8">
         <title>ユーザーの追加</title>
     </head>
-    <body>
+    <body class="body">
         <h1>ユーザーの追加</h1>
         <form action="#" method="get" th:action="@{/user_add_db}" th:object="${entuser}">
             <div>ユーザー名 <input type="text" name="user_name"></div>

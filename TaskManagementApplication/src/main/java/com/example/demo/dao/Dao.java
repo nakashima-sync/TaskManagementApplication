@@ -85,6 +85,23 @@ public class Dao {
 		}
 		return resultDb2;
 	}
+	public List<EntDepart> getProjectOfDepart(int depart_id) {
+		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `depart` WHERE depart_id = ?",
+				depart_id);
+		List<EntDepart> resultDb2 = new ArrayList<EntDepart>();
+		for (Map<String, Object> depart : resultDb1) {
+			EntDepart entity = new EntDepart();
+			entity.setId((int) depart.get("depart_id"));
+			entity.setUser_id((int) depart.get("user_id"));
+			entity.setUser_name((String) db
+					.queryForMap("SELECT user_name FROM `user` WHERE user_id = ?", new Object[] { entity.getUser_id() })
+					.get("user_name"));
+			entity.setUser_task(this.getTaskOfDepart(entity.getId()));
+			entity.setProject_id((int)depart.get("project_id"));
+			resultDb2.add(entity);
+		}
+		return resultDb2;
+	}
 
 	public List<EntUser> getAllUser() {
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM `user`");
@@ -96,6 +113,14 @@ public class Dao {
 			resultDb2.add(entity);
 		}
 		return resultDb2;
+	}
+
+	public EntUser getUser(int user_id) {
+		Map<String, Object> result = db.queryForMap("SELECT * FROM `user` WHERE user_id = ?", user_id);
+		EntUser entity = new EntUser();
+		entity.setUser_id((int) result.get("user_id"));
+		entity.setUser_name((String) result.get("user_name"));
+		return entity;
 	}
 
 	public List<EntProject> getAllProject() {

@@ -9,17 +9,17 @@
 
 <body>
 	<div class="container">
-		<div class="side"><!--左側に表示するプロジェクト等の要素-->
+		<div class="project_sidebar"><!--左側に表示するプロジェクト等の要素-->
 			<div class="project project">
 				<h1>プロジェクトリスト</h1>
 				<table>
 					<tr th:each="res:${projectList}">
 						<form th:action="@{/home/{id}(id=${res.project_id})}">
-							<input type="submit" name="name" th:value='${res.project_name}'>
+							<input type="submit" class="button" name="name" th:value='${res.project_name}'>
 							<input type="hidden" name="project_id" th:value="${res.project_id}">
 						</form>
 						<form th:action="@{/project_setting/{id}(id=${res.project_id})}">
-							<input type="submit" name="name" value="edit" class="add-button">
+							<input type="submit" lass="button" name="name" value="edit" class="add-button">
 							<input type="hidden" name="project_id" th:value="${res.project_id}">
 						</form>
 						</br>

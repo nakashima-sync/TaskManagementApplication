@@ -1,10 +1,40 @@
 <html lang="ja" xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/home_task_style.css}" />
+    <title>プロジェクト詳細ページ</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" th:href="@{/home_task_style.css}" />
-	<title>プロジェクト詳細ページ</title>
-</head>
+  <body>
+    <div class="container">
+      <!--左側に表示するプロジェクト一覧-->
+      <div class="project_sidebar">
+        <h3>Projects</h3>
+        <div th:each="project: ${projectList}">
+          <form
+            action="#"
+            method="get"
+            th:action="@{/home/{id}(id=${project.project_id})}"
+          >
+            <input
+              class="button"
+              type="submit"
+              th:value="${project.project_name}"
+            />
+          </form>
+        </div>
+        
+        <hr>
+        <!--プロジェクトを追加するためのボタン-->
+        <form action="#" method="get" th:action="@{/project_add}">
+          <input
+            class="project-add-button add-button"
+            type="submit"
+            value="Add"
+          />
+        </form>
+      </div>
+
       <!--右側bodyに表示する要素-->
       <div class="project_body">
         <h3>User's Task list</h3>
@@ -71,4 +101,3 @@
     </div>
   </body>
 </html>
-

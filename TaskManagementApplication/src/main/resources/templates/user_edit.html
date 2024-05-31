@@ -9,7 +9,7 @@
 <body>
     <h1>ユーザーの編集</h1>
 
-    <form th:action="@{/user_edit}" th:object="${entuser}">
+    <form th:action="@{/user_edit_db}" th:object="${userData}">
         <input type="text hidden" name="user_name" placeholder="ユーザー名" th:value="*{user_name}">
         <input type="submit" value="完了">
     </form>

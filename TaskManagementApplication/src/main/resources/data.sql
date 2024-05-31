@@ -1,27 +1,51 @@
--- Insert into user table
-INSERT INTO `user` (user_name) VALUES ('Alice');
-INSERT INTO `user` (user_name) VALUES ('Bob');
-INSERT INTO `user` (user_name) VALUES ('Charlie');
-INSERT INTO `user` (user_name) VALUES ('David');
-INSERT INTO `user` (user_name) VALUES ('Eve');
+-- Insert data into the `user` table
+INSERT INTO `user` (user_name) VALUES 
+('Alice'),
+('Bob'),
+('Charlie'),
+('David'),
+('Eve'),
+('Frank'),
+('Grace'),
+('Hannah'),
+('Ivy'),
+('Jack');
 
--- Insert into project table
-INSERT INTO `project` (project_name) VALUES ('Project Alpha');
-INSERT INTO `project` (project_name) VALUES ('Project Beta');
-INSERT INTO `project` (project_name) VALUES ('Project Gamma');
-INSERT INTO `project` (project_name) VALUES ('Project Delta');
-INSERT INTO `project` (project_name) VALUES ('Project Epsilon');
+-- Insert data into the `project` table
+INSERT INTO `project` (project_name) VALUES 
+('Project Alpha'),
+('Project Beta'),
+('Project Gamma'),
+('Project Delta'),
+('Project Epsilon'),
+('Project Zeta'),
+('Project Eta'),
+('Project Theta'),
+('Project Iota'),
+('Project Kappa');
 
--- Insert into depart table
-INSERT INTO `depart` (user_id, project_id) VALUES (1, 1);
-INSERT INTO `depart` (user_id, project_id) VALUES (2, 2);
-INSERT INTO `depart` (user_id, project_id) VALUES (3, 3);
-INSERT INTO `depart` (user_id, project_id) VALUES (4, 4);
-INSERT INTO `depart` (user_id, project_id) VALUES (5, 5);
+-- Insert data into the `depart` table
+INSERT INTO `depart` (user_id, project_id) VALUES 
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
 
--- Insert into task table
-INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 1', 1, 'Contents for Task 1', '2024-06-30', 0);
-INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 2', 2, 'Contents for Task 2', '2024-07-15', 0);
-INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 3', 3, 'Contents for Task 3', '2024-08-01', 0);
-INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 4', 4, 'Contents for Task 4', '2024-08-20', 0);
-INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES ('Task 5', 5, 'Contents for Task 5', '2024-09-10', 0);
+-- Insert data into the `task` table
+INSERT INTO `task` (task_name, depart_id, task_contents, task_limit, task_checked) VALUES 
+('Design Database Schema', 1, 'Create the initial database schema for Project Alpha', '2024-06-15', 0),
+('Implement User Authentication', 2, 'Develop the authentication module for Project Beta', '2024-06-20', 0),
+('Set Up CI/CD Pipeline', 3, 'Establish the CI/CD pipeline for Project Gamma', '2024-06-25', 0),
+('Develop REST API', 4, 'Build the REST API for Project Delta', '2024-06-30', 0),
+('Create Frontend Layout', 5, 'Design and implement the frontend layout for Project Epsilon', '2024-07-05', 0),
+('Write Unit Tests', 6, 'Write unit tests for Project Zeta', '2024-07-10', 0),
+('Optimize Database Queries', 7, 'Optimize SQL queries for Project Eta', '2024-07-15', 0),
+('Conduct Security Audit', 8, 'Perform a security audit for Project Theta', '2024-07-20', 0),
+('Prepare Documentation', 9, 'Prepare the project documentation for Project Iota', '2024-07-25', 0),
+('Deploy to Production', 10, 'Deploy Project Kappa to the production environment', '2024-07-30', 0);

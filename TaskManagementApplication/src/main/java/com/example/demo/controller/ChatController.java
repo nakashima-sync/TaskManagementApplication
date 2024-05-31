@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +63,7 @@ public class ChatController {
 	public String project_setting(@PathVariable("id") int id, Model model, EntProject entproject, EntDepart entdepart) {
 		model.addAttribute("projectData", dao.getProject(id));
 		model.addAttribute("userList", dao.getAllUser());
+		// model.addAttribute("project_userList", dao.getProjectUser());
 		return "project_setting";
 	}
 
@@ -75,19 +74,18 @@ public class ChatController {
 	}
 
 	@RequestMapping("/task_add/{id}")
-	public String task_add(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+	public String task_add(@PathVariable("id") int id, Model model, EntTask enttask, EntDepart entdepart) {
 		model.addAttribute("depart_id", id);
 		return "task_add";
 	}
 
 	@RequestMapping("/task_add_db/{id}")
-	public String task_add_db(@PathVariable("id") int id,Model model, EntTask enttask, EntDepart entdepart) {
+	public String task_add_db(@PathVariable("id") int id, Model model, EntTask enttask, EntDepart entdepart) {
 		enttask.setDepart_id(id);
 		enttask.setTask_checked(0);
-		List<EntDepart> list = dao.getProjectOfDepart(enttask.getDepart_id());
-		int project_id = list.get(0).getProject_id(); 	
+		EntProject project = dao.getProjectOfDepart(enttask.getDepart_id());
 		dao.insert(enttask);
-		return "redirect:/home/" + project_id ; 
+		return "redirect:/home/" + project.getProject_id();
 	}
 
 	@RequestMapping("/task_edit/{id}")
@@ -99,7 +97,8 @@ public class ChatController {
 	@RequestMapping("/task_edit_db")
 	public String task_edit_db(Model model, EntTask enttask, EntDepart entdepart) {
 		dao.update(enttask);
-		return "redirect:/home/" + entdepart.getProject_id();
+		EntProject project = dao.getProjectOfDepart(enttask.getDepart_id());
+		return "redirect:/home/" + project.getProject_id();
 	}
 
 	@RequestMapping("/project/delete/{id}")
@@ -114,23 +113,25 @@ public class ChatController {
 		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
-	@RequestMapping("/task/checked/{id}")
-	public String task_checked(@PathVariable int id, EntTask enttask, EntDepart entdepart) {
+	@RequestMapping("/task/checked/{task_id}/{depart_id}")
+	public String task_checked(@PathVariable("task_id") int task_id, @PathVariable("depart_id") int depart_id) {
+		EntTask enttask = dao.getTask(task_id);
 		enttask.setTask_checked(1 - enttask.getTask_checked());
 		dao.update(enttask);
-		return "redirect:/home/" + entdepart.getProject_id();
+		return "redirect:/home/" + depart_id;
 	}
 
 	@RequestMapping("/user_edit/{id}")
-	public String user_edit(@PathVariable int id, Model model, EntUser entuser) {
-		model.addAttribute("userData", dao.getUser(id));
+	public String user_edit(@PathVariable int id, Model model) {
+		model.addAttribute("entuser", dao.getUser(id));
 		return "user_edit";
 	}
 
 	@RequestMapping("/user_edit_db")
 	public String user_edit_db(Model model, EntUser entuser) {
+		System.out.println(entuser.getUser_id());
 		dao.update(entuser);
-		return "redirect:user_view";
+		return "redirect:/home";
 	}
 
 	@RequestMapping("/user/delete/{id}")

@@ -114,11 +114,12 @@ public class ChatController {
 		return "redirect:/home/" + entdepart.getProject_id();
 	}
 
-	@RequestMapping("/task/checked/{id}")
-	public String task_checked(@PathVariable int id, EntTask enttask, EntDepart entdepart) {
+	@RequestMapping("/task/checked/{task_id}/{depart_id}")
+	public String task_checked(@PathVariable("task_id") int task_id, @PathVariable("depart_id") int depart_id) {
+		EntTask enttask = dao.getTask(task_id);		
 		enttask.setTask_checked(1 - enttask.getTask_checked());
 		dao.update(enttask);
-		return "redirect:/home/" + entdepart.getProject_id();
+		return "redirect:/home/" + depart_id;
 	}
 
 	@RequestMapping("/user_edit/{id}")

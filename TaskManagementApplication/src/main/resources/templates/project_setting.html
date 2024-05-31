@@ -29,8 +29,8 @@
                     </tr>
                 </table>
                 
-                <form th:action="@{/project_add}">
-                    <input class="user-button add-button" type="submit" name="name" value="プロジェクトの削除">
+                <form th:action="@{/project_delete/{id}(id=*{project_id})}">
+                    <input type="submit" value="プロジェクトの削除">
                 </form>
             </div>
             </div>

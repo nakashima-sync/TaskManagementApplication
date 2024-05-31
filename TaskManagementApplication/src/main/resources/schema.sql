@@ -15,8 +15,8 @@ CREATE TABLE `depart` (
     user_id INT NOT NULL,
     project_id INT NOT NULL,
     PRIMARY KEY (depart_id),
-    FOREIGN KEY (user_id) REFERENCES `user`(user_id),
-    FOREIGN KEY (project_id) REFERENCES `project`(project_id)
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES `project`(project_id) ON DELETE CASCADE
 );
 
 CREATE TABLE `task` (
@@ -27,5 +27,5 @@ CREATE TABLE `task` (
     task_limit DATE NOT NULL,
     task_checked INT NOT NULL,
     PRIMARY KEY (task_id),
-    FOREIGN KEY (depart_id) REFERENCES `depart`(depart_id)
+    FOREIGN KEY (depart_id) REFERENCES `depart`(depart_id) ON DELETE CASCADE
 );

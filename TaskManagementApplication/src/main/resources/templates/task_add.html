@@ -8,7 +8,7 @@
     </head>
     <body class="body">
         <h1>タスクの追加</h1>
-        <for action="#" method="get" th:action="@{/task_add_db/{id}(id=${depart_id})}" th:object="${enttask}">
+        <form action="#" method="get" th:action="@{/task_add_db/{id}(id=${depart_id})}" th:object="${enttask}">
             <div>タスク名 <input type="text" name="task_name" ></div>
             <div>期限     <input type="date" name="task_limit"></div>
             <div>内容     <input type="text" name="task_contents" style="width:80%"></div>

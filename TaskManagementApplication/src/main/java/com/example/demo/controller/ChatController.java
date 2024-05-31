@@ -115,10 +115,10 @@ public class ChatController {
 		return "redirect:/home";
 	}
 
-	@RequestMapping("/task/delete/{id}")
-	public String task_delete(@PathVariable int id, EntDepart entdepart) {
-		dao.delete("task", id);
-		return "redirect:/home/" + entdepart.getProject_id();
+	@RequestMapping("/task/delete/{task_id}/{depart_id}")
+	public String task_delete(@PathVariable("task_id") int task_id, @PathVariable("depart_id") int depart_id) {
+		dao.delete("task", task_id);
+		return "redirect:/home/" + depart_id;
 	}
 
 	@RequestMapping("/task/checked/{task_id}/{depart_id}")

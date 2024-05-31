@@ -16,13 +16,13 @@
                 
                 <p>追加するユーザーを選択</p>
 
-                <div class="each" th:each="depart : ${departList}">
+                <div>
                     <table>
                         <tr th:each="res : ${userList}">
-                            <td th:if="${depart.user_name == res.user_name}">
+                            <td th:if="${#lists.contains(departList, res)}">
                                 <span th:text="${res.user_name} + ' 追加済み'"></span>
                             </td>
-                            <td th:if="${depart.user_name != res.user_name}">
+                            <td th:if="${!#lists.contains(departList, res)}">
                                 <form th:action="@{/project_setting_db/{user_id}/{project_id}/{user_name} (user_id=${res.user_id}, project_id=*{project_id}, user_name=${res.user_name})}" method="get">
                                     <span th:text="${res.user_name}"></span>
                                     <input type="submit" value="追加">

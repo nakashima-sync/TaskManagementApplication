@@ -2,21 +2,22 @@
 <html lang="ja" xmlns="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <meta charset="UTF-8">
-    <title>ユーザーの編集</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<meta charset="UTF-8">
+	<title>ユーザーの編集</title>
 </head>
 
 <body class="body">
-    <h1>ユーザーの編集</h1>
+	<h1>ユーザーの編集</h1>
 
-    <form th:action="@{/user_edit_db}" th:object="${userData}">
-        <input type="text hidden" name="user_name" placeholder="ユーザー名" th:value="*{user_name}">
-        <input type="submit" value="完了">
-    </form>
-    <form th:action="@{/user/delete/{id}(id=${user_edit.id})}">
-        <input type="submit" value="削除" />
-    </form>
+	<form th:action="@{/user_edit_db}" th:object="${entuser}">
+		<input type="hidden" name="user_id" th:value="*{user_id}">
+		<input type="text hidden" name="user_name" placeholder="ユーザー名" th:value="*{user_name}">
+		<input type="submit" value="完了">
+	</form>
+	<form th:action="@{/user/delete/{id}(id=${entuser.user_id})}">
+		<input type="submit" value="削除" />
+	</form>
 </body>
 
 </html>

@@ -122,15 +122,16 @@ public class ChatController {
 	}
 
 	@RequestMapping("/user_edit/{id}")
-	public String user_edit(@PathVariable int id, Model model, EntUser entuser) {
-		model.addAttribute("userData", dao.getUser(id));
+	public String user_edit(@PathVariable int id, Model model) {
+		model.addAttribute("entuser", dao.getUser(id));
 		return "user_edit";
 	}
 
 	@RequestMapping("/user_edit_db")
 	public String user_edit_db(Model model, EntUser entuser) {
+		System.out.println(entuser.getUser_id());
 		dao.update(entuser);
-		return "redirect:user_view";
+		return "redirect:/home";
 	}
 
 	@RequestMapping("/user/delete/{id}")

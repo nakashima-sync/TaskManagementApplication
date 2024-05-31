@@ -6,10 +6,14 @@
 	<meta charset="UTF-8">
 	<title>プロジェクトの追加</title>
 </head>
-<div class="top_image"></div>
 
 
 <body class="body">
+	<div class="header">
+		<div class="top_image">
+		</div>
+	</div>
+
 	<h1>プロジェクトの追加</h1>
 	<form action="#" method="get" th:action="@{/project_add_db}" th:object="${entproject}">
 		<div>プロジェクト名 <input type="text" name="project_name"></div>

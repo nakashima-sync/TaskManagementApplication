@@ -106,3 +106,9 @@ p {
     color: red;
     font-weight: bold;
 }
+.header{
+    height: 350px;
+    background-image: url("./image/user_add.jpg");
+    background-size: cover;
+    background-position: 400% 45%;
+}

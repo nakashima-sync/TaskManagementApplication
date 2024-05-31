@@ -7,6 +7,8 @@
         <title>タスクの追加</title>
     </head>
     <body class="body">
+        <div class="header">
+        </div>
         <h1>タスクの追加</h1>
         <form action="#" method="get" th:action="@{/task_add_db/{id}(id=${depart_id})}" th:object="${enttask}">
             <div>タスク名 <input type="text" name="task_name" ></div>

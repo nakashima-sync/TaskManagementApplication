@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="ja">
+
     <head>
+        <link rel="stylesheet" th:href="@{/style.css}">
         <meta charset="UTF-8">
         <title>タスクの追加</title>
     </head>
-    <body>
+    <body class="body">
         <h1>タスクの追加</h1>
         <form action="#" method="get" th:action="@{/task_add_db}" th:object="${enttask}">
             <div>タスク名 <input type="text" name="task_name"></div>
